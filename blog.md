@@ -142,8 +142,6 @@ The `tf.estimator` framework provides a higher level API for training machine le
 
 We will use a `Head` to simplify the writing of our model function `model_fn`. The head already knows how to compute predictions, loss, train_op, metrics and export outputs, and can be reused across models. We will use `_binary_logistic_head_with_sigmoid_cross_entropy_loss`, which is a head for single label binary classification that uses `sigmoid_cross_entropy_with_logits` loss.
 
-`@TODO add some context of the model we are creating here`
-
 
 ```python
 head = head_lib._binary_logistic_head_with_sigmoid_cross_entropy_loss()
@@ -324,5 +322,5 @@ We hope you have found this Tutorial usefull, here are some useful references if
 In the next series of this post we will show how to build a model using RNNs and eagear execution, work with out of memory datasets, train in Cloud ML and deploy with TensorFlow serving
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTUxOTc0ODA5OV19
+eyJoaXN0b3J5IjpbMTUxNzY1MzUzM119
 -->
