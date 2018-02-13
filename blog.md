@@ -106,11 +106,11 @@ plt.show()
 
 ![Model weights](https://raw.githubusercontent.com/eisenjulian/nlp_estimator_tutorial/master/token_weights.png)
 
-As we can see, tokens with the most positive weight such as 'refreshing' are clearly associated with positive sentiment, while tokens that have a large negative weight are undeniably 
+As we can see, tokens with the most positive weight such as 'refreshing' are clearly associated with positive sentiment, while tokens that have a large negative weight unarguably evoke negative emotions.
 
 ### Embeddings
 
-The next step of complexity we can add are word embeddings. Embeddings are a dense low-dimensional representation of sparse high-dimensional data. This allows our model to learn a more meaningful representation of each token, rather than just an index. While an individual dimension is not meaningful, the low-dimensional space---when learned from a enough large corpus---has been shown to capture relations such as tense, plural, gender, thematic relatedness, and many more. We can add word embeddings by converting our existing feature column into an `embedding_column`. This is the effectively the same as adding a fully connected second layer to our previous attempt, thus getting a 2-layer-deep feed forward network.
+The next step of complexity we can add are word embeddings. Embeddings are a dense low-dimensional representation of sparse high-dimensional data. This allows our model to learn a more meaningful representation of each token, rather than just an index. While an individual dimension is not meaningful, the low-dimensional space---when learned from a enough large corpus---has been shown to capture relations such as tense, plural, gender, thematic relatedness, and many more. We can add word embeddings by converting our existing feature column into an `embedding_column`. This is effectively the same as adding a fully connected second layer to our previous attempt, thus resulting in a 2-layer-deep feed forward network.
 
 
 ```python
@@ -123,7 +123,7 @@ classifier = tf.estimator.LinearClassifier(
 train_and_evaluate(classifier)
 ```    
 
-We can use TensorBoard to visualize a our $50$-dimensional word vectors projected into $\mathbb{R}^3$ using [t-SNE](https://en.wikipedia.org/wiki/T-distributed_stochastic_neighbor_embedding). We expect similar word to be closed to each other. This can be a useful way to inspect our model weights and find unexpected behaviours. There's plenty of more information to go deeper [here](https://www.tensorflow.org/programmers_guide/embedding)
+We can use TensorBoard to visualize a our $50$-dimensional word vectors projected into $\mathbb{R}^3$ using [t-SNE](https://en.wikipedia.org/wiki/T-distributed_stochastic_neighbor_embedding). We expect similar words to be close to each other. This can be a useful way to inspect our model weights and find unexpected behaviours. There's plenty of information available to [explore further](https://www.tensorflow.org/programmers_guide/embedding).
 
 ![embeddings](https://raw.githubusercontent.com/eisenjulian/nlp_estimator_tutorial/master/embeddings.png)
 
@@ -141,7 +141,7 @@ Raw unchecked export the notebook from here onwards
 
 As seen in previous blog posts, the `tf.estimator` framework provides a higher level API for training machine learning models, defining `train()`, `evaluate()` and `predict()` operations, handling checkpointing, loading, initializing, serving, building the graph and the session out of the box. One the many benefits it provides is that the same code will be able to run in CPUs, GPUs and even in a distributed setup. There's a small family of pre-made estimators, like the ones we used earlier, but it's most likely that you will need to build your own. [This](https://www.tensorflow.org/extend/estimators) guide contains a thorough explanation on how to do it.
 
-Writing a custom estimator means writing a `model_fn(features, labels, mode)`. First step will be mapping the features into our embedding layer
+Writing a custom estimator means writing a `model_fn(features, labels, mode)`. First step will be mapping the features into our embedding layer:
 
 ```python
 initializer = tf.random_uniform([vocab_size, embedding_size], -1.0, 1.0))
@@ -325,5 +325,5 @@ We hope you have found this Tutorial usefull, here are some useful references if
 In the next series of this post we will show how to build a model using RNNs and eagear execution, work with out of memory datasets, train in Cloud ML and deploy with TensorFlow serving
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTUyNjMwODk5Nl19
+eyJoaXN0b3J5IjpbLTEyMTAxMzA1MTZdfQ==
 -->
