@@ -210,8 +210,8 @@ An LSTM processes the entire document sequentially. In the beginning, we padded 
 ```mermaid
 graph LR
     id1(Embedding Layer) --> id2(LSTM Cell) 
-    id2 --> id2
-    id2 --> id7(Output Layer)
+    id2 -->|Recursion| id2
+    id2 --> id3(Output Layer)
 ```
 
 
@@ -330,5 +330,5 @@ We hope you have found this Tutorial usefull, here are some useful references if
 In the next series of this post we will show how to build a model using RNNs and eagear execution, work with out of memory datasets, train in Cloud ML and deploy with TensorFlow serving
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTk4NDA0ODgyNV19
+eyJoaXN0b3J5IjpbNTk2MTA3OTQ3XX0=
 -->
