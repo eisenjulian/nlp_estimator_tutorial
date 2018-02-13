@@ -207,6 +207,17 @@ Using the `Estimator` API and the same model `head`, we can also create a classi
 
 An LSTM processes the entire document sequentially. In the beginning, we padded all documents up to 400 tokens, necessary to build a proper tensor. However, when a document contains fewer than 400 words, we don't want the LSTM to continue processing the padding token as it does not add information and degrades performance. For this reason, we additionally want to provide our LSTM with the length of the original sequence before it was padded. The LSTM then copies the last state through to the sequence's end. We can do this by using the `"len"` feature in our input functions.
 
+```mermaid
+graph LR
+    id1(Embedding Layer) --> id2(Dropout) 
+    id2 --> id3(Convolution1D)
+    id3 --> id4(GlobalMaxPooling1D)
+    id4 --> id5(Hidden Dense Layer)
+    id5 --> id6(Dropout)
+    id6 --> id7(Output Layer)
+```
+
+
 We can use the same logic as above and simply need to replace the convolutional, pooling, and flatten layers with our LSTM cell.
 
 ----------
@@ -322,5 +333,5 @@ We hope you have found this Tutorial usefull, here are some useful references if
 In the next series of this post we will show how to build a model using RNNs and eagear execution, work with out of memory datasets, train in Cloud ML and deploy with TensorFlow serving
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk1NDA4OTAzM119
+eyJoaXN0b3J5IjpbMjg5Mjg4MDE4XX0=
 -->
