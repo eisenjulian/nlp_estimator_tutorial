@@ -124,7 +124,7 @@ train_and_evaluate(classifier)
 
 We can use TensorBoard to visualize a our $50$-dimensional word vectors projected into $\mathbb{R}^3$ using [t-SNE](https://en.wikipedia.org/wiki/T-distributed_stochastic_neighbor_embedding). We expect similar word to be closed to each other. This can be a useful way to inspect our model weights and find unexpected behaviours. There's plenty of more information to go deeper [here](https://www.tensorflow.org/programmers_guide/embedding)
 
-![enter image description here](https://raw.githubusercontent.com/eisenjulian/nlp_estimator_tutorial/master/embeddings.png)
+![embeddings](https://raw.githubusercontent.com/eisenjulian/nlp_estimator_tutorial/master/embeddings.png)
 
 ### Convolutions
 
@@ -324,5 +324,5 @@ We hope you have found this Tutorial usefull, here are some useful references if
 In the next series of this post we will show how to build a model using RNNs and eagear execution, work with out of memory datasets, train in Cloud ML and deploy with TensorFlow serving
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTg2NDMzNDk2XX0=
+eyJoaXN0b3J5IjpbLTUxOTc0ODA5OV19
 -->
