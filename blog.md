@@ -137,8 +137,9 @@ Convolutions are one way to take advantage of this structure, similar to how we 
 graph LR
     id1(Embedding Layer) --> id2(Dropout) 
     id2 --> id3(Convolution1D)
-    id3 ->> id4(GlobalMaxPooling1D)
-    id4 ->> id5(Hidden Dense Layer)
+    id3 --> id4(GlobalMaxPooling1D)
+    id4 --> id5(Hidden Dense Layer)
+    id5 --> id6(D)
 ```
 
 ### Creating a custom estimator
@@ -332,5 +333,5 @@ We hope you have found this Tutorial usefull, here are some useful references if
 In the next series of this post we will show how to build a model using RNNs and eagear execution, work with out of memory datasets, train in Cloud ML and deploy with TensorFlow serving
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTkxMjA5NjA3N119
+eyJoaXN0b3J5IjpbODQ2MzU2NTY5XX0=
 -->
