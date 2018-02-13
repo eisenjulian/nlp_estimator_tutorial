@@ -156,7 +156,7 @@ initializer = tf.random_uniform([vocab_size, embedding_size], -1.0, 1.0))
 embeddings = tf.get_variable('embeddings', initializer=initializer)
 input_layer = tf.nn.embedding_lookup(embeddings, features['x'])
 ```
-
+Then we use `tf.layers` to build the
 ```python
 dropout_emb = tf.layers.dropout(inputs=input_layer, rate=0.2, training=mode == tf.estimator.ModeKeys.TRAIN)
 
@@ -179,6 +179,7 @@ dropout_emb = tf.layers.dropout(inputs=input_layer, rate=0.2, training=mode == t
     hidden = tf.layers.dense(inputs=flat, units=250, activation=tf.nn.relu)
     
     dropout = tf.layers.dropout(inputs=hidden, rate=0.2, training=mode == tf.estimator.ModeKeys.TRAIN)
+```
 
 ----------
 Raw unchecked export the notebook from here onwards
@@ -359,5 +360,5 @@ We hope you have found this Tutorial usefull, here are some useful references if
 In the next series of this post we will show how to build a model using RNNs and eagear execution, work with out of memory datasets, train in Cloud ML and deploy with TensorFlow serving
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5MjcyNjkwOV19
+eyJoaXN0b3J5IjpbLTQzMjQwMTE0MV19
 -->
