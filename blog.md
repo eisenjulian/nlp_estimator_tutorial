@@ -131,13 +131,13 @@ We can use TensorBoard to visualize a our $50$-dimensional word vectors projecte
 
 At this point one possible apprach would be to go deeper, further adding more fully connected layers and playing around with layer sizes and training functions. However, by doing that we would add extra complexity and ignore important structure in our sentences. Tokens don't live in a vacuum and meaning is compositional, formed by tokens and its neighbours.
 
-Convolutions are one way to take advantage of this structure, similar to how we can model salient clusters of pixels for [image classification](https://www.tensorflow.org/tutorials/layers). The intuition is that small parts of a sentence, or *n-grams*, usually have the same meaning regardless of their overall position in the sentence. Introducing a structural prior via the convolution  Therefore having our model re-learn that fact from examples can be prohibite in terms of the ammount of data it would take.
-
-​```sequence
+Convolutions are one way to take advantage of this structure, similar to how we can model salient clusters of pixels for [image classification](https://www.tensorflow.org/tutorials/layers). The intuition is that small parts of a sentence, or *n-grams*, usually have the same meaning regardless of their overall position in the sentence. Introducing a structural prior via the convolution e inter​```sequence
 Alice->Bob: Hello Bob, how are you?
 Note right of Bob: Bob thinks
 Bob-->Alice: I am good thanks!
-​```----------
+```action between tokens.
+
+----------
 Raw unchecked export the notebook from here onwards
 ----------
 
@@ -328,5 +328,5 @@ We hope you have found this Tutorial usefull, here are some useful references if
 In the next series of this post we will show how to build a model using RNNs and eagear execution, work with out of memory datasets, train in Cloud ML and deploy with TensorFlow serving
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTMwNjc5Mzg4NF19
+eyJoaXN0b3J5IjpbNDUyMDE3NzBdfQ==
 -->
