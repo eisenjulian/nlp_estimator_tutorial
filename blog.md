@@ -182,31 +182,6 @@ We will use a `Head` to simplify the writing of our model function `model_fn`. T
 ```python
 head = head_lib._binary_logistic_head_with_sigmoid_cross_entropy_loss()
     
-    dropout_emb = tf.layers.dropout(inputs=input_layer, rate=0.2, training=mode == tf.estimator.ModeKeys.TRAIN)
-
-    conv = tf.layers.conv1d(
-        inputs=dropout_emb,
-        filters=32,
-        kernel_size=3,
-        padding="same",
-        activation=tf.nn.relu)
-
-    # This is supposed to be Global Max Pooling, but there is not such a layer
-    pool = tf.layers.max_pooling1d(
-        inputs=conv, 
-        padding="valid", 
-        pool_size=sentence_size, 
-        strides=sentence_size)
-
-    flat = tf.layers.flatten(inputs=pool)
-
-    hidden = tf.layers.dense(inputs=flat, units=250, activation=tf.nn.relu)
-    
-    dropout = tf.layers.dropout(inputs=hidden, rate=0.2, training=mode == tf.estimator.ModeKeys.TRAIN)
-    
-   logits = tf.layers.dense(inputs=dropout, units=1)
-    
-    # This will be None when predicting
     if labels is not None:
         labels = tf.reshape(labels, [-1, 1])
 
@@ -355,5 +330,5 @@ We hope you have found this Tutorial usefull, here are some useful references if
 In the next series of this post we will show how to build a model using RNNs and eagear execution, work with out of memory datasets, train in Cloud ML and deploy with TensorFlow serving
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk2MDQ4MzkxMF19
+eyJoaXN0b3J5IjpbMjU3NjYwNDY4XX0=
 -->
