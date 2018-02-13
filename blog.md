@@ -180,20 +180,19 @@ Finally we will use a `Head` to simplify the writing of our last part of the `mo
 
 ```python
 head = head_lib._binary_logistic_head_with_sigmoid_cross_entropy_loss()
-optimizer = tf.train.AdamOptimizer()
-    
-    def _train_op_fn(loss):
-        tf.summary.scalar('loss', loss)
-        return optimizer.minimize(
-            loss=loss,
-            global_step=tf.train.get_global_step())
+optimizer = tf.train.AdamOptimizer()    
+def _train_op_fn(loss):
+    tf.summary.scalar('loss', loss)
+    return optimizer.minimize(
+        loss=loss,
+        global_step=tf.train.get_global_step())
 
-    return head.create_estimator_spec(
-        features=features,
-        labels=labels,
-        mode=mode,
-        logits=logits,
-        train_op_fn=_train_op_fn)
+return head.create_estimator_spec(
+    features=features,
+    labels=labels,
+    mode=mode,
+    logits=logits,
+    train_op_fn=_train_op_fn)
 ```
 
 ```python
@@ -324,5 +323,5 @@ We hope you have found this Tutorial usefull, here are some useful references if
 In the next series of this post we will show how to build a model using RNNs and eagear execution, work with out of memory datasets, train in Cloud ML and deploy with TensorFlow serving
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY3NjQ2MjQ0OV19
+eyJoaXN0b3J5IjpbLTcwNzIxNDc1MV19
 -->
