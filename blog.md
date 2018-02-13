@@ -174,6 +174,7 @@ pool = tf.layers.max_pooling1d(
 flat = tf.layers.flatten(inputs=pool)
 hidden = tf.layers.dense(inputs=flat, units=250, activation=tf.nn.relu)
 dropout = tf.layers.dropout(inputs=hidden, rate=0.2, training=training)
+logits = tf.layers.dense(inputs=dropout_hidden, units=1)
 ```
 
 Finally we will use a `Head` to simplify the writing of our last part of the `model_fn`. The head already knows how to compute predictions, loss, train_op, metrics and export outputs, and can be reused across models. This is also used on the canned estimators, so we get the benefit a uniform evaluation function across all of our models. We will use `_binary_logistic_head_with_sigmoid_cross_entropy_loss`, which is a head for single label binary classification that uses `sigmoid_cross_entropy_with_logits` loss.
@@ -221,9 +222,7 @@ We can use the same logic as above and simply need to replace the convolutional,
 lstm_cell = tf.contrib.rnn.BasicLSTMCell(100)
 _, final_states = tf.nn.dynamic_rnn(
         lstm_cell, inputs, sequence_length=features['len'], dtype=tf.float32)
-
-    # get the final hidden states of dimensionality [batch_size x sentence_size]
-    outputs = final_states.h
+outputs = final_states.h
 
     logits = tf.layers.dense(inputs=outputs, units=1)
 
@@ -318,5 +317,5 @@ We hope you have found this Tutorial usefull, here are some useful references if
 In the next series of this post we will show how to build a model using RNNs and eagear execution, work with out of memory datasets, train in Cloud ML and deploy with TensorFlow serving
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTMyMDIwMjA0OF19
+eyJoaXN0b3J5IjpbLTY2MTY0NzQyOV19
 -->
