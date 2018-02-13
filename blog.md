@@ -157,6 +157,29 @@ embeddings = tf.get_variable('embeddings', initializer=initializer)
 input_layer = tf.nn.embedding_lookup(embeddings, features['x'])
 ```
 
+```python
+dropout_emb = tf.layers.dropout(inputs=input_layer, rate=0.2, training=mode == tf.estimator.ModeKeys.TRAIN)
+
+    conv = tf.layers.conv1d(
+        inputs=dropout_emb,
+        filters=32,
+        kernel_size=3,
+        padding="same",
+        activation=tf.nn.relu)
+
+    # This is supposed to be Global Max Pooling, but there is not such a layer
+    pool = tf.layers.max_pooling1d(
+        inputs=conv, 
+        padding="valid", 
+        pool_size=sentence_size, 
+        strides=sentence_size)
+
+    flat = tf.layers.flatten(inputs=pool)
+
+    hidden = tf.layers.dense(inputs=flat, units=250, activation=tf.nn.relu)
+    
+    dropout = tf.layers.dropout(inputs=hidden, rate=0.2, training=mode == tf.estimator.ModeKeys.TRAIN)
+
 ----------
 Raw unchecked export the notebook from here onwards
 ----------
@@ -336,5 +359,5 @@ We hope you have found this Tutorial usefull, here are some useful references if
 In the next series of this post we will show how to build a model using RNNs and eagear execution, work with out of memory datasets, train in Cloud ML and deploy with TensorFlow serving
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3OTcwNDc4NzldfQ==
+eyJoaXN0b3J5IjpbLTE5MjcyNjkwOV19
 -->
