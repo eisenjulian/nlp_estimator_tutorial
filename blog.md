@@ -158,7 +158,7 @@ input_layer = tf.nn.embedding_lookup(embeddings, features['x'])
 ```
 Then we use `tf.layers` to process each each output sequentially.
 ```python
-training = mode == tf.estimator.ModeKeys.TRAIN
+training = (mode == tf.estimator.ModeKeys.TRAIN)
 dropout_emb = tf.layers.dropout(inputs=input_layer, rate=0.2, training=training)
 conv = tf.layers.conv1d(
     inputs=dropout_emb,
@@ -166,18 +166,14 @@ conv = tf.layers.conv1d(
     kernel_size=3,
     padding="same",
     activation=tf.nn.relu)
-
 pool = tf.layers.max_pooling1d(
     inputs=conv, 
     padding="valid", 
     pool_size=sentence_size, 
     strides=sentence_size)
-
-    flat = tf.layers.flatten(inputs=pool)
-
-    hidden = tf.layers.dense(inputs=flat, units=250, activation=tf.nn.relu)
-    
-    dropout = tf.layers.dropout(inputs=hidden, rate=0.2, training=mode == tf.estimator.ModeKeys.TRAIN)
+flat = tf.layers.flatten(inputs=pool)
+hidden = tf.layers.dense(inputs=flat, units=250, activation=tf.nn.relu)
+dropout = tf.layers.dropout(inputs=hidden, rate=0.2, training=training)
 ```
 
 ----------
@@ -359,5 +355,5 @@ We hope you have found this Tutorial usefull, here are some useful references if
 In the next series of this post we will show how to build a model using RNNs and eagear execution, work with out of memory datasets, train in Cloud ML and deploy with TensorFlow serving
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTQxNTkxODAxXX0=
+eyJoaXN0b3J5IjpbODE3MzA0NDc4XX0=
 -->
