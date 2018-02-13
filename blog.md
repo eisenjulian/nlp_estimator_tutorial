@@ -129,13 +129,15 @@ We can use TensorBoard to visualize a our $50$-dimensional word vectors projecte
 
 ### Convolutions
 
-At this point one possible apprach would be to go deeper, further adding more fully connected layers and playing around with layer sizes and training functions. However, by doing that we would add extra complexity and ignore important structure in our sentences. Tokens don't live in a vacuum and meaning is compositional, formed by tokens , but they affect and are affected by their neighbors. 
+At this point one possible apprach would be to go deeper, further adding more fully connected layers and playing around with layer sizes and training functions. However, by doing that we would add extra complexity and ignore important structure in our sentences. Tokens don't live in a vacuum and meaning is compositional, formed by tokens and its neighbours.
 
-Convolutions are one way to take advantage of that structure, in the same way that happens for adjacent pixels in [image classification](https://www.tensorflow.org/tutorials/layers). The intuition is that small parts of a sentence, or *n-grams*, usually have the same meaning regardless of their overall position in the sentence, therefore having our model re-learn that fact from examples can be prohibite in terms of the ammount of data it would take.
+Convolutions are one way to take advantage of this structure, similar to how we can model salient clusters of pixels for [image classification](https://www.tensorflow.org/tutorials/layers). The intuition is that small parts of a sentence, or *n-grams*, usually have the same meaning regardless of their overall position in the sentence. Introducing a structural prior via the convolution  Therefore having our model re-learn that fact from examples can be prohibite in terms of the ammount of data it would take.
 
-
-
-----------
+​```sequence
+Alice->Bob: Hello Bob, how are you?
+Note right of Bob: Bob thinks
+Bob-->Alice: I am good thanks!
+​```----------
 Raw unchecked export the notebook from here onwards
 ----------
 
@@ -150,7 +152,6 @@ initializer = tf.random_uniform([vocab_size, embedding_size], -1.0, 1.0))
 embeddings = tf.get_variable('embeddings', initializer=initializer)
 input_layer = tf.nn.embedding_lookup(embeddings, features['x'])
 ```
-e 
 
 We will use a `Head` to simplify the writing of our model function `model_fn`. The head already knows how to compute predictions, loss, train_op, metrics and export outputs, and can be reused across models. This is also used on the canned estimators, so we get the benefit a uniform evaluation function across all of our models. We will use `_binary_logistic_head_with_sigmoid_cross_entropy_loss`, which is a head for single label binary classification that uses `sigmoid_cross_entropy_with_logits` loss.
 
@@ -327,5 +328,5 @@ We hope you have found this Tutorial usefull, here are some useful references if
 In the next series of this post we will show how to build a model using RNNs and eagear execution, work with out of memory datasets, train in Cloud ML and deploy with TensorFlow serving
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIxMTgzMTg1MDNdfQ==
+eyJoaXN0b3J5IjpbMTMwNjc5Mzg4NF19
 -->
