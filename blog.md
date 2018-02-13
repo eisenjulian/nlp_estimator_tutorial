@@ -141,7 +141,7 @@ Raw unchecked export the notebook from here onwards
 
 As seen in previous blog posts, the `tf.estimator` framework provides a higher level API for training machine learning models, defining `train()`, `evaluate()` and `predict()` operations, handling checkpointing, loading, initializing, serving, building the graph and the session out of the box. One the many benefits it provides is that the same code will be able to run in CPUs, GPUs and even in a distributed setup. There's a small family of pre-made estimators, like the ones we used earlier, but it's most likely that you will need to build your own. [This](https://www.tensorflow.org/extend/estimators) guide contains a thorough explanation on how to do it.
 
-Writing a custom estimator means writing a `model_fn(features, labels, mode)`. First step is in out convolution models will be mapping the features into our embedding layer
+Writing a custom estimator means writing a `model_fn(features, labels, mode)`. First step will be mapping the features into our embedding layer
 
 ```python
 initializer = tf.random_uniform([vocab_size, embedding_size], -1.0, 1.0))
@@ -325,5 +325,5 @@ We hope you have found this Tutorial usefull, here are some useful references if
 In the next series of this post we will show how to build a model using RNNs and eagear execution, work with out of memory datasets, train in Cloud ML and deploy with TensorFlow serving
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQ5Mzc0NTIxXX0=
+eyJoaXN0b3J5IjpbLTUyNjMwODk5Nl19
 -->
