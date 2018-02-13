@@ -147,10 +147,8 @@ We will use a `Head` to simplify the writing of our model function `model_fn`. T
 head = head_lib._binary_logistic_head_with_sigmoid_cross_entropy_loss()
 
 def cnn_model_fn(features, labels, mode):
-    initializer=tf.random_uniform([vocab_size, embedding_size], -1.0, 1.0))
-    embeddings = tf.get_variable('embeddings', 
-                                 initializer=tf.random_uniform(
-                                     [vocab_size, embedding_size], -1.0, 1.0))
+    initializer = tf.random_uniform([vocab_size, embedding_size], -1.0, 1.0))
+    embeddings = tf.get_variable('embeddings', initializer=initializer)
   
     input_layer = tf.nn.embedding_lookup(embeddings, features['x'])
     
@@ -323,5 +321,5 @@ We hope you have found this Tutorial usefull, here are some useful references if
 In the next series of this post we will show how to build a model using RNNs and eagear execution, work with out of memory datasets, train in Cloud ML and deploy with TensorFlow serving
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk4MTY0MDgzNV19
+eyJoaXN0b3J5IjpbLTE4MTk2NzMxMTddfQ==
 -->
