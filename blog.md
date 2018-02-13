@@ -217,25 +217,9 @@ graph LR
 
 We can use the same logic as above and simply need to replace the convolutional, pooling, and flatten layers with our LSTM cell.
 
-----------
-Raw unchecked export the notebook from here onwards
-----------
-
 ```python
-def lstm_model_fn(features, labels, mode):
-
-    embeddings = tf.get_variable('embeddings',
-                                 initializer=tf.random_uniform(
-                                     [vocab_size,embedding_size], -1.0, 1.0))
-
-    # [batch_size x sentence_size x embedding_size]
-    inputs = tf.nn.embedding_lookup(embeddings, features['x'])
-
-    # create an LSTM cell of size 100
-    lstm_cell = tf.contrib.rnn.BasicLSTMCell(100)
-    
-    # create the complete LSTM
-    _, final_states = tf.nn.dynamic_rnn(
+lstm_cell = tf.contrib.rnn.BasicLSTMCell(100)
+_, final_states = tf.nn.dynamic_rnn(
         lstm_cell, inputs, sequence_length=features['len'], dtype=tf.float32)
 
     # get the final hidden states of dimensionality [batch_size x sentence_size]
@@ -265,6 +249,10 @@ lstm_classifier = tf.estimator.Estimator(model_fn=lstm_model_fn,
                                          model_dir=model_dir + 'lstm')
 train_and_evaluate(lstm_classifier)
 ```
+
+----------
+Raw unchecked export the notebook from here onwards
+----------
 
 ### Pretrained vectors
 
@@ -330,5 +318,5 @@ We hope you have found this Tutorial usefull, here are some useful references if
 In the next series of this post we will show how to build a model using RNNs and eagear execution, work with out of memory datasets, train in Cloud ML and deploy with TensorFlow serving
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTk2MTA3OTQ3XX0=
+eyJoaXN0b3J5IjpbLTMyMDIwMjA0OF19
 -->
