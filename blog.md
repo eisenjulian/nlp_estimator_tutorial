@@ -194,16 +194,12 @@ return head.create_estimator_spec(
     logits=logits,
     train_op_fn=_train_op_fn)
 ```
-Running this model is just as easy as before
+Running this model is just as easy as before:
 ```python
 cnn_classifier = tf.estimator.Estimator(model_fn=model_fn,
                                         model_dir=os.path.join(model_dir, 'cnn'))
 train_and_evaluate(cnn_classifier)
 ```
-
-----------
-Raw unchecked export the notebook from here onwards
-----------
 
 ### LSTM Networks
 
@@ -213,6 +209,9 @@ An LSTM processes the entire document sequentially. In the beginning, we padded 
 
 We can use the same logic as above and simply need to replace the convolutional, pooling, and flatten layers with our LSTM cell.
 
+----------
+Raw unchecked export the notebook from here onwards
+----------
 
 ```python
 def lstm_model_fn(features, labels, mode):
@@ -323,5 +322,5 @@ We hope you have found this Tutorial usefull, here are some useful references if
 In the next series of this post we will show how to build a model using RNNs and eagear execution, work with out of memory datasets, train in Cloud ML and deploy with TensorFlow serving
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5NTA1MDk2NDddfQ==
+eyJoaXN0b3J5IjpbMTk1NDA4OTAzM119
 -->
