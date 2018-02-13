@@ -80,8 +80,8 @@ def train_and_evaluate(classifier):
 train_and_evaluate(classifier)
 ```
 
-One of the benefits of choosing a simple model is that it's much more inspectable. The more complex the model is, the more it tends to work like a black box. In this example we can load the weights from our model's last checkpoint and take a look at what tokens correspond to the  biggest weights in absolute value. The results looks like what we would expecte can see, the most 
-.
+One of the benefits of choosing a simple model is that it's much more inspectable. The more complex the model is, the more it tends to work like a black box. In this example we can load the weights from our model's last checkpoint and take a look at what tokens correspond to the  biggest weights in absolute value. The results looks like what we would expect.
+
 ```python
 # Load the latest checkpoint
 linear_model_checkpoint = saver.latest_checkpoint(
@@ -106,7 +106,7 @@ plt.show()
 
 ![Model weights](https://raw.githubusercontent.com/eisenjulian/nlp_estimator_tutorial/master/token_weights.png)
 
-As w
+As we can see, the most 
 
 ### Embeddings
 
@@ -324,5 +324,5 @@ We hope you have found this Tutorial usefull, here are some useful references if
 In the next series of this post we will show how to build a model using RNNs and eagear execution, work with out of memory datasets, train in Cloud ML and deploy with TensorFlow serving
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjA1NDU3OTg0XX0=
+eyJoaXN0b3J5IjpbLTExOTI1MzgyMzJdfQ==
 -->
