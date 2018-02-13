@@ -187,7 +187,7 @@ head = head_lib._binary_logistic_head_with_sigmoid_cross_entropy_loss()
     
     dropout = tf.layers.dropout(inputs=hidden, rate=0.2, training=mode == tf.estimator.ModeKeys.TRAIN)
     
-    logits = tf.layers.dense(inputs=dropout, units=1)
+   logits = tf.layers.dense(inputs=dropout, units=1)
     
     # This will be None when predicting
     if labels is not None:
@@ -334,5 +334,5 @@ We hope you have found this Tutorial usefull, here are some useful references if
 In the next series of this post we will show how to build a model using RNNs and eagear execution, work with out of memory datasets, train in Cloud ML and deploy with TensorFlow serving
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjMwNDY1OTExXX0=
+eyJoaXN0b3J5IjpbOTM2MzkzMDA1XX0=
 -->
