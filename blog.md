@@ -139,7 +139,8 @@ graph LR
     id2 --> id3(Convolution1D)
     id3 --> id4(GlobalMaxPooling1D)
     id4 --> id5(Hidden Dense Layer)
-    id5 --> id6(D)
+    id5 --> id6(Dropout)
+    id6 --> 
 ```
 
 ### Creating a custom estimator
@@ -333,5 +334,5 @@ We hope you have found this Tutorial usefull, here are some useful references if
 In the next series of this post we will show how to build a model using RNNs and eagear execution, work with out of memory datasets, train in Cloud ML and deploy with TensorFlow serving
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODQ2MzU2NTY5XX0=
+eyJoaXN0b3J5IjpbNjMwNDY1OTExXX0=
 -->
