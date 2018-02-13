@@ -146,9 +146,6 @@ sequenceDiagram
     John->>Bob: How about you?
     Bob-->>John: Jolly good!
 ```
-----------
-Raw unchecked export the notebook from here onwards
-----------
 
 ### Creating a custom estimator
 
@@ -161,6 +158,10 @@ initializer = tf.random_uniform([vocab_size, embedding_size], -1.0, 1.0))
 embeddings = tf.get_variable('embeddings', initializer=initializer)
 input_layer = tf.nn.embedding_lookup(embeddings, features['x'])
 ```
+
+----------
+Raw unchecked export the notebook from here onwards
+----------
 
 We will use a `Head` to simplify the writing of our model function `model_fn`. The head already knows how to compute predictions, loss, train_op, metrics and export outputs, and can be reused across models. This is also used on the canned estimators, so we get the benefit a uniform evaluation function across all of our models. We will use `_binary_logistic_head_with_sigmoid_cross_entropy_loss`, which is a head for single label binary classification that uses `sigmoid_cross_entropy_with_logits` loss.
 
@@ -337,5 +338,5 @@ We hope you have found this Tutorial usefull, here are some useful references if
 In the next series of this post we will show how to build a model using RNNs and eagear execution, work with out of memory datasets, train in Cloud ML and deploy with TensorFlow serving
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTg4ODY5NDUzOF19
+eyJoaXN0b3J5IjpbLTIzMTgwMjI0Ml19
 -->
