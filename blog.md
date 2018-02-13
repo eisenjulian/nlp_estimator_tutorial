@@ -133,7 +133,7 @@ At this point one possible apprach would be to go deeper, further adding more fu
 
 Convolutions are one way to take advantage of this structure, similar to how we can model salient clusters of pixels for [image classification](https://www.tensorflow.org/tutorials/layers). The intuition is that small parts of a sentence, or *n-grams*, usually have the same meaning regardless of their overall position in the sentence. Introducing a structural prior via the convolution allows us to model the interaction between neighbouring tokens and consequently gives us a better way to represent such meaning.
 
-Let's look at a sample model architecture. 
+Let's look at a sample model architecture. The use of dropout layers is a regularization technique thus making the model less likely to overfit.
 
 ```mermaid
 graph LR
@@ -336,5 +336,5 @@ We hope you have found this Tutorial usefull, here are some useful references if
 In the next series of this post we will show how to build a model using RNNs and eagear execution, work with out of memory datasets, train in Cloud ML and deploy with TensorFlow serving
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzYzODU4NjQ0XX0=
+eyJoaXN0b3J5IjpbLTE3OTcwNDc4NzldfQ==
 -->
