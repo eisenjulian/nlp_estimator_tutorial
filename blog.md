@@ -176,16 +176,11 @@ hidden = tf.layers.dense(inputs=flat, units=250, activation=tf.nn.relu)
 dropout = tf.layers.dropout(inputs=hidden, rate=0.2, training=training)
 ```
 
-We will use a `Head` to simplify the writing of our model function `model_fn`. The head already knows how to compute predictions, loss, train_op, metrics and export outputs, and can be reused across models. This is also used on the canned estimators, so we get the benefit a uniform evaluation function across all of our models. We will use `_binary_logistic_head_with_sigmoid_cross_entropy_loss`, which is a head for single label binary classification that uses `sigmoid_cross_entropy_with_logits` loss.
-
+Finally we will use a `Head` to simplify the writing of our last part of the `model_fn`. The head already knows how to compute predictions, loss, train_op, metrics and export outputs, and can be reused across models. This is also used on the canned estimators, so we get the benefit a uniform evaluation function across all of our models. We will use `_binary_logistic_head_with_sigmoid_cross_entropy_loss`, which is a head for single label binary classification that uses `sigmoid_cross_entropy_with_logits` loss.
 
 ```python
 head = head_lib._binary_logistic_head_with_sigmoid_cross_entropy_loss()
-    
-    if labels is not None:
-        labels = tf.reshape(labels, [-1, 1])
-
-    optimizer = tf.train.AdamOptimizer()
+optimizer = tf.train.AdamOptimizer()
     
     def _train_op_fn(loss):
         tf.summary.scalar('loss', loss)
@@ -200,7 +195,6 @@ head = head_lib._binary_logistic_head_with_sigmoid_cross_entropy_loss()
         logits=logits,
         train_op_fn=_train_op_fn)
 ```
-
 
 ```python
 cnn_classifier = tf.estimator.Estimator(model_fn=cnn_model_fn,
@@ -330,5 +324,5 @@ We hope you have found this Tutorial usefull, here are some useful references if
 In the next series of this post we will show how to build a model using RNNs and eagear execution, work with out of memory datasets, train in Cloud ML and deploy with TensorFlow serving
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjU3NjYwNDY4XX0=
+eyJoaXN0b3J5IjpbLTY3NjQ2MjQ0OV19
 -->
