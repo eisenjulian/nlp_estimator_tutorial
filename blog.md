@@ -106,7 +106,7 @@ plt.show()
 
 ![Model weights](https://raw.githubusercontent.com/eisenjulian/nlp_estimator_tutorial/master/token_weights.png)
 
-As we can see, tokens with the most positive weight such as 'refreshing' are clearly associated with positive sentiment, while tokens that have a large negative weight are 
+As we can see, tokens with the most positive weight such as 'refreshing' are clearly associated with positive sentiment, while tokens that have a large negative weight are undeniably 
 
 ### Embeddings
 
@@ -325,5 +325,5 @@ We hope you have found this Tutorial usefull, here are some useful references if
 In the next series of this post we will show how to build a model using RNNs and eagear execution, work with out of memory datasets, train in Cloud ML and deploy with TensorFlow serving
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg2NjczOTExMl19
+eyJoaXN0b3J5IjpbLTQ5Mzc0NTIxXX0=
 -->
