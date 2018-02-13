@@ -137,8 +137,8 @@ Convolutions are one way to take advantage of this structure, similar to how we 
 graph LR
     id1[Embedding Layer] 
     --> id2[Bla]
-    --> id2[Bla]
-    --> id2[Bla]
+    --> id3[Bla]
+    --> id4[Bla]
 ```
 
 ### Creating a custom estimator
@@ -332,5 +332,5 @@ We hope you have found this Tutorial usefull, here are some useful references if
 In the next series of this post we will show how to build a model using RNNs and eagear execution, work with out of memory datasets, train in Cloud ML and deploy with TensorFlow serving
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzA2ODkxMDE0XX0=
+eyJoaXN0b3J5IjpbLTE3MjUzODY0NjFdfQ==
 -->
