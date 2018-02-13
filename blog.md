@@ -222,31 +222,7 @@ We can use the same logic as above and simply need to replace the convolutional,
 lstm_cell = tf.contrib.rnn.BasicLSTMCell(100)
 _, final_states = tf.nn.dynamic_rnn(
         lstm_cell, inputs, sequence_length=features['len'], dtype=tf.float32)
-outputs = final_states.h
-
-    logits = tf.layers.dense(inputs=outputs, units=1)
-
-    labels = tf.reshape(labels, [-1, 1])
-
-    optimizer = tf.train.AdamOptimizer()
-
-    def _train_op_fn(loss):
-        tf.summary.scalar('loss', loss)
-        return optimizer.minimize(
-            loss=loss,
-            global_step=tf.train.get_global_step())
-
-    return head.create_estimator_spec(
-        features=features,
-        labels=labels,
-        mode=mode,
-        logits=logits,
-        train_op_fn=_train_op_fn)
-
-
-lstm_classifier = tf.estimator.Estimator(model_fn=lstm_model_fn,
-                                         model_dir=model_dir + 'lstm')
-train_and_evaluate(lstm_classifier)
+logits = tf.layers.dense(inputs=final_states.h, units=1)
 ```
 
 ----------
@@ -317,5 +293,5 @@ We hope you have found this Tutorial usefull, here are some useful references if
 In the next series of this post we will show how to build a model using RNNs and eagear execution, work with out of memory datasets, train in Cloud ML and deploy with TensorFlow serving
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY2MTY0NzQyOV19
+eyJoaXN0b3J5IjpbMTc5ODIwMjQ2OV19
 -->
