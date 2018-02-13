@@ -135,7 +135,7 @@ Convolutions are one way to take advantage of this structure, similar to how we 
 
 ```mermaid
 graph LR
-    id1[Embedding Layer] --> id2[Bla 1] --> id3[Bla 2]
+    id1(Embedding Layer) --> id2(Dropout) --> id3(pe)
 ```
 
 ### Creating a custom estimator
@@ -329,5 +329,5 @@ We hope you have found this Tutorial usefull, here are some useful references if
 In the next series of this post we will show how to build a model using RNNs and eagear execution, work with out of memory datasets, train in Cloud ML and deploy with TensorFlow serving
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTgzNTkyMTY2MF19
+eyJoaXN0b3J5IjpbLTE5NjYxMTcyNjJdfQ==
 -->
