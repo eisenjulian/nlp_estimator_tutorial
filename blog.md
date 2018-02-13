@@ -194,10 +194,10 @@ return head.create_estimator_spec(
     logits=logits,
     train_op_fn=_train_op_fn)
 ```
-
+Running this model is just as easy as before
 ```python
-cnn_classifier = tf.estimator.Estimator(model_fn=cnn_model_fn,
-                                        model_dir=model_dir + 'cnn2')
+cnn_classifier = tf.estimator.Estimator(model_fn=model_fn,
+                                        model_dir=os.path.join(model_dir, 'cnn'))
 train_and_evaluate(cnn_classifier)
 ```
 
@@ -323,5 +323,5 @@ We hope you have found this Tutorial usefull, here are some useful references if
 In the next series of this post we will show how to build a model using RNNs and eagear execution, work with out of memory datasets, train in Cloud ML and deploy with TensorFlow serving
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTcwNzIxNDc1MV19
+eyJoaXN0b3J5IjpbLTE5NTA1MDk2NDddfQ==
 -->
