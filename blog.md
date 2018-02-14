@@ -229,7 +229,6 @@ logits = tf.layers.dense(inputs=final_states.h, units=1)
 
 Most of the models that we have shown before rely on word embeddings as a first layer to increase performance, and we have so far initialized them at random, however it has been shown all [over](https://arxiv.org/abs/1607.01759) [the](https://arxiv.org/abs/1301.3781) [literature](https://arxiv.org/abs/1103.0398), that specially for small labelled datasets, a great benefit can be obtained by training a different model that also uses embeddings in a separate task that only needs a large unlabelled corpora, and share the results. One such task is shown [here](https://www.tensorflow.org/tutorials/word2vec). That technique is usually referred to as *transfer learning*.
 
-
 With that end, we will show you one last model where the embeddings are fixed. We will use the pre-trained vectors from [GloVe](https://nlp.stanford.edu/projects/glove/) on the Wikipedia corpus. If you have a billion-word + corpus on your domain, it might be also be a good idea to use that one instead.
 
 ```python
@@ -240,7 +239,8 @@ with open('glove.6B.50d.txt', 'r', encoding='utf-8') as f:
         w = values[0]
         vectors = np.asarray(values[1:], dtype='float32')
         embeddings[w] = vectors
-
+```
+```python
 embedding_matrix = np.random.uniform(-1, 1, size=(vocab_size, embedding_size))
 num_loaded = 0
 for w, i in word_index.items():
@@ -300,5 +300,5 @@ For more details, be sure to check out:
 In a following post we will show how to build a model using eagear execution, work with out of memory datasets, train in Cloud ML and deploy with TensorFlow Serving.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjEwNDg3MTY5NV19
+eyJoaXN0b3J5IjpbLTE1NTk3NTA5MjVdfQ==
 -->
