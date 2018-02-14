@@ -231,7 +231,7 @@ Raw unchecked export the notebook from here onwards
 
 ### Pretrained vectors
 
-Most of the models that we have shown before rely on word embeddings as a first layer to increase performance, and we have so far initialized them at random, however it has been shown all [over](https://arxiv.org/abs/1607.01759) [the](https://arxiv.org/abs/1301.3781) [literature](https://arxiv.org/abs/1103.0398), that specially for small labelled datasets, a great benefit can be obtained by training a different model that also uses embeddings in a separate task that only needs a large unlabelled corpora, and share the results. One such task is shown [here](https://www.tensorflow.org/tutorials/word2vec). That technique is usually referre to as *transfer learning*.
+Most of the models that we have shown before rely on word embeddings as a first layer to increase performance, and we have so far initialized them at random, however it has been shown all [over](https://arxiv.org/abs/1607.01759) [the](https://arxiv.org/abs/1301.3781) [literature](https://arxiv.org/abs/1103.0398), that specially for small labelled datasets, a great benefit can be obtained by training a different model that also uses embeddings in a separate task that only needs a large unlabelled corpora, and share the results. One such task is shown [here](https://www.tensorflow.org/tutorials/word2vec). That technique is usually referred to as *transfer learning*.
 
 
 With that end, we will show you one last model where the embeddings are fixed. We will use the pre-trained vectors from [GloVe](https://nlp.stanford.edu/projects/glove/) on the Wikipedia corpus. If you have a billion-word + corpus on your domain, it might be also be a good idea to use that one instead.
@@ -293,5 +293,5 @@ We hope you have found this Tutorial usefull, here are some useful references if
 In the next series of this post we will show how to build a model using RNNs and eagear execution, work with out of memory datasets, train in Cloud ML and deploy with TensorFlow serving
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTc5ODIwMjQ2OV19
+eyJoaXN0b3J5IjpbLTI0OTMyMDkzXX0=
 -->
