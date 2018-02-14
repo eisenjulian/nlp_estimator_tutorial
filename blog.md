@@ -249,18 +249,16 @@ for w, i in word_index.items():
     v = embeddings.get(w)
     if v is not None and i < vocab_size:
         embedding_matrix[i] = v
-        num_loaded += 1
-print('Successfully loaded pretrained embeddings for '
-      f'{num_loaded}/{vocab_size} words.')
-return embedding_matrix
 ```
+
+
 
 ### Running TensorBoard
 
 Now we can launch Tensorboard and see how the different models we've trained compare against each other in terms of terms of training time and performance.
 
 In a terminal, we run
-```
+```bash
 > tensorboard --logdir=/tmp/exp
 ```
 
@@ -302,5 +300,5 @@ For more details, be sure to check out:
 In a following post we will show how to build a model using eagear execution, work with out of memory datasets, train in Cloud ML and deploy with TensorFlow Serving.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQyMjUxNDcxNF19
+eyJoaXN0b3J5IjpbLTIwMjcxMDUyMF19
 -->
