@@ -274,10 +274,10 @@ For more details, be sure to check out:
 
  * The complete [source code](https://github.com) for this blog post
  * A [Jupyer notebook](https://github.com) that can run locally, or on Colaboratory
- * 
+ * The TensorFlow [Vector Representation of Words](
 
 In the next series of this post we will show how to build a model using RNNs and eagear execution, work with out of memory datasets, train in Cloud ML and deploy with TensorFlow serving
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQzODI3Mzg3NV19
+eyJoaXN0b3J5IjpbMTMyOTkzMTU3XX0=
 -->
