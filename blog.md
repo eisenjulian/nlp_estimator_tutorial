@@ -233,6 +233,27 @@ Most of the models that we have shown before rely on word embeddings as a first 
 With that end, we will show you one last model where the embeddings are fixed. We will use the pre-trained vectors from [GloVe](https://nlp.stanford.edu/projects/glove/) on the Wikipedia corpus. If you have a billion-word + corpus on your domain, it might be also be a good idea to use that one instead.
 
 ```python
+def load_glove_embeddings(path):
+    embeddings = {}
+    with open(path, 'r', encoding='utf-8') as f:
+        for line in f:
+            values = line.strip().split()
+            w = values[0]
+            vectors = np.asarray(values[1:], dtype='float32')
+            embeddings[w] = vectors
+
+    embedding_matrix = np.random.uniform(-1, 1, size=(vocab_size, embedding_size))
+    num_loaded = 0
+    for w, i in word_index.items():
+        v = embeddings.get(w)
+        if v is not None and i < vocab_size:
+            embedding_matrix[i] = v
+            num_loaded += 1
+    print('Successfully loaded pretrained embeddings for '
+          f'{num_loaded}/{vocab_size} words.')
+    return embedding_matrix
+
+embedding_matrix = load_glove_embeddings('glove.6B.50d.txt')
 ```
 
 ### Running TensorBoard
@@ -282,5 +303,5 @@ For more details, be sure to check out:
 In a following post we will show how to build a model using eagear execution, work with out of memory datasets, train in Cloud ML and deploy with TensorFlow Serving.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTMwMDM0NzgzMF19
+eyJoaXN0b3J5IjpbMTA1MDM5Nzk1Ml19
 -->
