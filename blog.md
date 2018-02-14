@@ -263,7 +263,7 @@ def text_to_index(sentence):
     tokens = sentence.translate(translator).lower().split()
     return np.array([1] + [word_index[t] + index_offset if t in word_index else 2 for t in tokens])
 
-def print_predictions(sentences):
+def print_predictions(sentences, classifier):
     indexes = [text_to_index(sentence) for sentence in sentences]
     x = sequence.pad_sequences(indexes, maxlen=sentence_size)
     length = np.array([max(len(x), sentence_size) for x in indexes])
@@ -275,14 +275,6 @@ def print_predictions(sentences):
         print(sentence)
         for path in all_classifiers:
             print("\t{} {}".format(path, predictions[path][idx]))
-
-# print(print(index_to_text(x_test_variable[5][1:])))
-texts = [index_to_text(x_test_variable[i][1:]).replace('?', 'UNK65432') for i in range(25000) if y_test[i] == 0 and len(x_test_variable[i]) < 30][:20]
-# print_predictions(texts)
-print_predictions([
-    "I really liked the movie!", 
-    "Hated every second of it..."
-])
 ```
     
 
@@ -293,5 +285,5 @@ We hope you have found this Tutorial usefull, here are some useful references if
 In the next series of this post we will show how to build a model using RNNs and eagear execution, work with out of memory datasets, train in Cloud ML and deploy with TensorFlow serving
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjAwNjY1Nzk5M119
+eyJoaXN0b3J5IjpbNTQ4MTgzNDhdfQ==
 -->
