@@ -276,8 +276,8 @@ For more details, be sure to check out:
  * A [Jupyer notebook](https://github.com) that can run locally, or on Colaboratory
  * The TensorFlow [Vector Representation of Words](https://www.tensorflow.org/tutorials/word2vec) tutorial
 
-In the next series of this post we will show how to build a model using RNNs and eagear execution, work with out of memory datasets, train in Cloud ML and deploy with TensorFlow serving
+In a following post we will show how to build a model using eagear execution, work with out of memory datasets, train in Cloud ML and deploy with TensorFlow Serving.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjYwMjYxODg2XX0=
+eyJoaXN0b3J5IjpbLTE2Nzg2NTEyMDBdfQ==
 -->
