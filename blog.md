@@ -269,9 +269,7 @@ def print_predictions(sentences, classifier):
     length = np.array([max(len(x), sentence_size) for x in indexes])
     predict_input_fn = tf.estimator.inputs.numpy_input_fn(x={"x": x, "len": length}, shuffle=False)
     predictions = [p['logistic'][0] for p in classifier.predict(input_fn=predict_input_fn)]
-    for idx, sentence in enumerate(sentences):
-        print(sentence)
-        print("\t{} {}".format(path, predictions[path][idx]))
+    print(predictions)
 ```
     
 
@@ -282,5 +280,5 @@ We hope you have found this Tutorial usefull, here are some useful references if
 In the next series of this post we will show how to build a model using RNNs and eagear execution, work with out of memory datasets, train in Cloud ML and deploy with TensorFlow serving
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTM5MjA2NzIyXX0=
+eyJoaXN0b3J5IjpbMTM0NjE1NzU1XX0=
 -->
