@@ -258,7 +258,7 @@ If your are interested in exporting the models to disk in a fully recoverable wa
 
 ```python
 def text_to_index(sentence):
-    # Remove punctutaion characters except for the apostrophe
+    # Remove punctuation characters except for the apostrophe
     translator = str.maketrans('', '', string.punctuation.replace("'", ''))
     tokens = sentence.translate(translator).lower().split()
     return np.array([1] + [word_index[t] + index_offset if t in word_index else 2 for t in tokens])
@@ -293,5 +293,5 @@ We hope you have found this Tutorial usefull, here are some useful references if
 In the next series of this post we will show how to build a model using RNNs and eagear execution, work with out of memory datasets, train in Cloud ML and deploy with TensorFlow serving
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI0OTMyMDkzXX0=
+eyJoaXN0b3J5IjpbMjAwNjY1Nzk5M119
 -->
