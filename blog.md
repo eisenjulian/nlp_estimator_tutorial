@@ -5,7 +5,7 @@ Classifying text with TensorFlow Estimators
 
 Welcome to Part 4 of a blog series that introduces TensorFlow Datasets and Estimators. [Part 1](https://developers.googleblog.com/2017/09/introducing-tensorflow-datasets.html) focused on pre-made Estimators, [Part 2](https://developers.googleblog.com/2017/11/introducing-tensorflow-feature-columns.html) discussed feature columns, and [Part 3](https://developers.googleblog.com/2017/12/creating-custom-estimators-in-tensorflow.html) how to create custom Estimators.  Here on Part 4 we will build on top of all the above to tackle a different family of problems in Natural Language Processing. In particular, this article demonstrates how to solve a text classification task using custom TensorFlow estimators, embeddings and the [tf.layers](https://www.tensorflow.org/api_docs/python/tf/layers) module. Along the way we'll learn about word2vec and transfer learning as a technique to bootstrap model performance when labeled data is a scarce resource.
 
-We will show you relevant code snippets. [Here](https://github.com)'s a more complete Jupyter Notebook  that you can fully run locally or on [Google Collaborary](https://colab.research.google.com). The plain `.py`  source file is also available [here](https://github.com). Note that the code was written to demonstrate how Estimators work functionally, and was not optimized for maximum performance.
+We will show you relevant code snippets. [Here](https://github.com)'s a more complete Jupyter Notebook  that you can fully run locally or on [Google Colaborary](https://colab.research.google.com). The plain `.py`  source file is also available [here](https://github.com). Note that the code was written to demonstrate how Estimators work functionally, and was not optimized for maximum performance.
 
 ### The task
 
@@ -279,5 +279,5 @@ For more details, be sure to check out:
 In the next series of this post we will show how to build a model using RNNs and eagear execution, work with out of memory datasets, train in Cloud ML and deploy with TensorFlow serving
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDI2MzIzODcxXX0=
+eyJoaXN0b3J5IjpbMTQzODI3Mzg3NV19
 -->
