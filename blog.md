@@ -268,10 +268,12 @@ def print_predictions(sentences, classifier):
 
 ### Summary
 
+In this blogpost, we explored how to use estimators for 
+
 We hope you have found this Tutorial usefull, here are some useful references if you want to continue digging in the subject of estimators and text classification.
 
 In the next series of this post we will show how to build a model using RNNs and eagear execution, work with out of memory datasets, train in Cloud ML and deploy with TensorFlow serving
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU2MzQ4ODg5Ml19
+eyJoaXN0b3J5IjpbLTcwNjc1ODAzMl19
 -->
