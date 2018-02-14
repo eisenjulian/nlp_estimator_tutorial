@@ -251,7 +251,7 @@ for w, i in word_index.items():
         embedding_matrix[i] = v
 ```
 
-Finally we can use the 
+Finally we can use the [`tf.train.Scaffold`](https://www.tensorflow.org/api_docs/python/tf/train/Scaffold) property in the `EstimatorSpec` returne
 
 ```python
 def init_fn(scaffold, sess):
@@ -260,6 +260,7 @@ def init_fn(scaffold, sess):
                                         embedding_matrix})
 scaffold = tf.train.Scaffold(init_fn=init_fn)
 ```
+
 ### Running TensorBoard
 
 Now we can launch Tensorboard and see how the different models we've trained compare against each other in terms of terms of training time and performance.
@@ -307,5 +308,5 @@ For more details, be sure to check out:
 In a following post we will show how to build a model using eagear execution, work with out of memory datasets, train in Cloud ML and deploy with TensorFlow Serving.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2OTcwODQwOTZdfQ==
+eyJoaXN0b3J5IjpbMTU1OTc1MzUzMl19
 -->
