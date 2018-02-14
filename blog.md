@@ -240,6 +240,9 @@ with open('glove.6B.50d.txt', 'r', encoding='utf-8') as f:
         vectors = np.asarray(values[1:], dtype='float32')
         embeddings[w] = vectors
 ```
+
+After loading the vectors into memory from a file we create 
+
 ```python
 embedding_matrix = np.random.uniform(-1, 1, size=(vocab_size, embedding_size))
 num_loaded = 0
@@ -300,5 +303,5 @@ For more details, be sure to check out:
 In a following post we will show how to build a model using eagear execution, work with out of memory datasets, train in Cloud ML and deploy with TensorFlow Serving.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1NTk3NTA5MjVdfQ==
+eyJoaXN0b3J5IjpbLTg2NzI3NzA0MF19
 -->
