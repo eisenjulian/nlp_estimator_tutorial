@@ -241,11 +241,10 @@ with open('glove.6B.50d.txt', 'r', encoding='utf-8') as f:
         embeddings[w] = vectors
 ```
 
-After loading the vectors into memory from a file we create 
+After loading the vectors into memory from a file we create numpy array using the same indexes as the reviews.
 
 ```python
 embedding_matrix = np.random.uniform(-1, 1, size=(vocab_size, embedding_size))
-num_loaded = 0
 for w, i in word_index.items():
     v = embeddings.get(w)
     if v is not None and i < vocab_size:
@@ -303,5 +302,5 @@ For more details, be sure to check out:
 In a following post we will show how to build a model using eagear execution, work with out of memory datasets, train in Cloud ML and deploy with TensorFlow Serving.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg2NzI3NzA0MF19
+eyJoaXN0b3J5IjpbLTQyMjUxNDcxNF19
 -->
