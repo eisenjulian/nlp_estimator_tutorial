@@ -225,9 +225,6 @@ _, final_states = tf.nn.dynamic_rnn(
 logits = tf.layers.dense(inputs=final_states.h, units=1)
 ```
 
-----------
-Raw unchecked export the notebook from here onwards
-----------
 
 ### Pretrained vectors
 
@@ -236,13 +233,11 @@ Most of the models that we have shown before rely on word embeddings as a first 
 
 With that end, we will show you one last model where the embeddings are fixed. We will use the pre-trained vectors from [GloVe](https://nlp.stanford.edu/projects/glove/) on the Wikipedia corpus. If you have a billion-word + corpus on your domain, it might be also be a good idea to use that one instead.
 
-## Results
-
-### Launching TensorBoard
+### Running TensorBoard
 
 Now we can launch Tensorboard and see how the different models we've trained compare against each other in terms of terms of training time and performance.
 
-In a terminal, do
+In a terminal, we run
 ```
 > tensorboard --logdir=/tmp/exp
 ```
@@ -271,14 +266,13 @@ def print_predictions(sentences, classifier):
     predictions = [p['logistic'][0] for p in classifier.predict(input_fn=predict_input_fn)]
     print(predictions)
 ```
-    
 
-### Other resources
+### Summary
 
 We hope you have found this Tutorial usefull, here are some useful references if you want to continue digging in the subject of estimators and text classification.
 
 In the next series of this post we will show how to build a model using RNNs and eagear execution, work with out of memory datasets, train in Cloud ML and deploy with TensorFlow serving
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM0NjE1NzU1XX0=
+eyJoaXN0b3J5IjpbLTIxMzI3ODY1NzRdfQ==
 -->
