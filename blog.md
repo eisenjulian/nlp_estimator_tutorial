@@ -214,8 +214,6 @@ graph LR
     id2 -->|Recursion| id2
     id2 --> id3(Output Layer)
 ```
-
-
 We can use the same logic as above and simply need to replace the convolutional, pooling, and flatten layers with our LSTM cell.
 
 ```python
@@ -307,5 +305,5 @@ For more details, be sure to check out:
 In a following post we will show how to build a model using eagear execution, work with out of memory datasets, train in Cloud ML and deploy with TensorFlow Serving.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwNDUwMTIwMzhdfQ==
+eyJoaXN0b3J5IjpbMTY2MDQzNTE2Nl19
 -->
