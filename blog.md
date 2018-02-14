@@ -273,11 +273,11 @@ In this blogpost, we explored how to use estimators for text classification, in 
 For more details, be sure to check out:
 
  * The complete [source code](https://github.com) for this blog post
- * A [Jupyer notebook](https://github.com) that you can run f
+ * A [Jupyer notebook](https://github.com) that can run locally, or on Colla
  * 
 
 In the next series of this post we will show how to build a model using RNNs and eagear execution, work with out of memory datasets, train in Cloud ML and deploy with TensorFlow serving
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIxMjc3NzgxNjddfQ==
+eyJoaXN0b3J5IjpbODQzMzUwMDk3XX0=
 -->
