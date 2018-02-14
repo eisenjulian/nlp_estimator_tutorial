@@ -268,12 +268,12 @@ def print_predictions(sentences, classifier):
 
 ### Summary
 
-In this blogpost, we explored how to use estimators for text classification. We trained and visualized our own embeddings, as well as loading pre-trained ones. We experimented with convolutions and LSTMs
+In this blogpost, we explored how to use estimators for text classification. We trained and visualized our own embeddings, as well as loading pre-trained ones. We experimented with convolutions and LSTMs.
 
 We hope you have found this Tutorial usefull, here are some useful references if you want to continue digging in the subject of estimators and text classification.
 
 In the next series of this post we will show how to build a model using RNNs and eagear execution, work with out of memory datasets, train in Cloud ML and deploy with TensorFlow serving
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1NjEyNzkxNTBdfQ==
+eyJoaXN0b3J5IjpbLTEyMDE2ODgyODRdfQ==
 -->
