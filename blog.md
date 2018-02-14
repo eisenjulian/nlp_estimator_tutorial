@@ -232,6 +232,9 @@ Most of the models that we have shown before rely on word embeddings as a first 
 
 With that end, we will show you one last model where the embeddings are fixed. We will use the pre-trained vectors from [GloVe](https://nlp.stanford.edu/projects/glove/) on the Wikipedia corpus. If you have a billion-word + corpus on your domain, it might be also be a good idea to use that one instead.
 
+```python
+```
+
 ### Running TensorBoard
 
 Now we can launch Tensorboard and see how the different models we've trained compare against each other in terms of terms of training time and performance.
@@ -279,5 +282,5 @@ For more details, be sure to check out:
 In a following post we will show how to build a model using eagear execution, work with out of memory datasets, train in Cloud ML and deploy with TensorFlow Serving.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2Nzg2NTEyMDBdfQ==
+eyJoaXN0b3J5IjpbLTMwMDM0NzgzMF19
 -->
