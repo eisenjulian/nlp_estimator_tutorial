@@ -268,16 +268,16 @@ def print_predictions(sentences, classifier):
 
 ### Summary
 
-In this blogpost, we explored how to use estimators for text classification, in particular for the IMDB Reviews Dataset. We trained and visualized our own embeddings, as well as loaded pre-trained ones. We experimented with convolutions and LSTM layers.
+In this blogpost, we explored how to use estimators for text classification, in particular for the IMDB Reviews Dataset. We trained and visualized our own embeddings, as well as loaded pre-trained ones. We built up from simpler models and experimented with convolutions and LSTM layers.
 
 For more details, be sure to check out:
 
- * 
+ * The complete source code for 
  *
  * 
 
 In the next series of this post we will show how to build a model using RNNs and eagear execution, work with out of memory datasets, train in Cloud ML and deploy with TensorFlow serving
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4NjMyMjE5MThdfQ==
+eyJoaXN0b3J5IjpbLTgyNTcyOTUwOV19
 -->
