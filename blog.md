@@ -62,7 +62,7 @@ classifier = tf.estimator.LinearClassifier(
     model_dir=os.path.join(model_dir, 'bow_sparse'))
 ```
 
-Finally, we create a simple function that trains the classifier and additionally creates a precision-recall curve. As we do not aim to maximize performance in this blog post, we only train our models for 25,000 steps.
+Finally, we create a simple function that trains the classifier and additionally creates a precision-recall curve. As we do not aim to maximize performance in this blog post, we only train our models for $25,000$ steps.
 
 ```python
 def train_and_evaluate(classifier):
@@ -317,5 +317,5 @@ RpYW4gUnVkZXJcbnRhZ3M6IFRlbnNvckZsb3csIEVzdGltYXRv
 ciwgTkxQXG5jYXRlZ29yaWVzOiBUZW5zb3JGbG93LCBFc3RpbW
 F0b3IsIE5MUFxuI2V4Y2VycHQ6XG4jZmVhdHVyZWRJbWFnZTpc
 biNzdGF0dXM6IGRyYWZ0XG5kYXRlOiAyMDE4LTAyLTE1IDExOj
-AwOjAwXG4iLCJoaXN0b3J5IjpbMTExMjc4ODU1Nl19
+AwOjAwXG4iLCJoaXN0b3J5IjpbMTQyODYxMjc2Nl19
 -->
