@@ -156,7 +156,7 @@ initializer = tf.random_uniform([vocab_size, embedding_size], -1.0, 1.0))
 embeddings = tf.get_variable('embeddings', initializer=initializer)
 input_layer = tf.nn.embedding_lookup(embeddings, features['x'])
 ```
-Then we use `tf.layers` to process each each output sequentially.
+Then we use `tf.layers` to process each output sequentially.
 ```python
 training = (mode == tf.estimator.ModeKeys.TRAIN)
 dropout_emb = tf.layers.dropout(inputs=input_layer, rate=0.2, training=training)
@@ -317,5 +317,5 @@ RpYW4gUnVkZXJcbnRhZ3M6IFRlbnNvckZsb3csIEVzdGltYXRv
 ciwgTkxQXG5jYXRlZ29yaWVzOiBUZW5zb3JGbG93LCBFc3RpbW
 F0b3IsIE5MUFxuI2V4Y2VycHQ6XG4jZmVhdHVyZWRJbWFnZTpc
 biNzdGF0dXM6IGRyYWZ0XG5kYXRlOiAyMDE4LTAyLTE1IDExOj
-AwOjAwXG4iLCJoaXN0b3J5IjpbMTIwNjQ5Mzc1OV19
+AwOjAwXG4iLCJoaXN0b3J5IjpbOTQ2OTA1MDY0XX0=
 -->
