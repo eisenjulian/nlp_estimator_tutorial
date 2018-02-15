@@ -210,15 +210,14 @@ Each cell processes one token embedding at a time updating its internal state ba
 
 ![](http://colah.github.io/posts/2015-08-Understanding-LSTMs/img/LSTM3-chain.png)
 
-The overall 
+The overall model looks like this:
 ```mermaid
 graph LR
     id1(Embedding Layer) --> id2(LSTM Cell) 
     id2 -->|Recursion| id2
     id2 --> id3(Output Layer)
 ```
-
-In the beginning, we padded all documents up to 200 tokens, which is necessary to build a proper tensor. However, when a document contains fewer than 200 words, we don't want the LSTM to continue processing the padding token as it does not add information and degrades performance. For this reason, we additionally want to provide our LSTM with the length of the original sequence before it was padded. The LSTM then copies the last state through to the sequence's end. We can do this by using the `"len"` feature in our input functions. We can now use the same logic as above and simply replace the convolutional, pooling, and flatten layers with our LSTM cell.
+In the beginning, we padded all documents up to $200$ tokens, which is necessary to build a proper tensor. However, when a document contains fewer than $200$ words, we don't want the LSTM to continue processing the padding token as it does not add information and degrades performance. For this reason, we additionally want to provide our LSTM with the length of the original sequence before it was padded. The LSTM then copies the last state through to the sequence's end. We can do this by using the `"len"` feature in our input functions. We can now use the same logic as above and simply replace the convolutional, pooling, and flatten layers with our LSTM cell.
 
 ```python
 lstm_cell = tf.contrib.rnn.BasicLSTMCell(100)
@@ -309,5 +308,5 @@ For more details, be sure to check out:
 In a following post, we will show how to build a model using eager execution, work with out-of0memory datasets, train in Cloud ML, and deploy with TensorFlow Serving.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTUzNjYwMDU0OF19
+eyJoaXN0b3J5IjpbMTQ0NjY1MDcyMF19
 -->
