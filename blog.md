@@ -206,7 +206,7 @@ train_and_evaluate(cnn_classifier)
 
 Using the `Estimator` API and the same model `head`, we can also create a classifier that uses a *Long Short-Term Memory* (*LSTM*) cell instead of convolutions. Recurrent models such as this are some of the most successful building blocks for NLP applications. An LSTM processes the entire document sequentially, recursing over the sequence with its cell while storing the current state of the sequence in its memory.
 
-Each cell processes one token embedding at a time updating its internal state based on a differentiable computation that depends on both that vector $x_t$ and its previous state $h_{t-1}$. There's a great explanation about the logic behind that at [this post](http://colah.github.io/posts/2015-08-Understanding-LSTMs/) on [Christopher Olah](https://github.com/colah)'s blog. Actually, everthing there is a must read!
+Each cell processes one token embedding at a time updating its internal state based on a differentiable computation that depends on both that vector $x_t$ and its previous state $h_{t-1}$. There's a great explanation about the logic behind that at [this post](http://colah.github.io/posts/2015-08-Understanding-LSTMs/) on [Christopher Olah](https://github.com/colah)'s blog. Actually, everything there is a must read!
 
 ![LSTM Architecture](https://colah.github.io/posts/2015-08-Understanding-LSTMs/img/LSTM3-chain.png)
 
@@ -228,7 +228,7 @@ logits = tf.layers.dense(inputs=final_states.h, units=1)
 
 ### Pretrained vectors
 
-Most of the models that we have shown before rely on word embeddings as a first layer to increase performance. So far, we have initialized them randomly. However, [much](https://arxiv.org/abs/1607.01759) [previous](https://arxiv.org/abs/1301.3781) [work](https://arxiv.org/abs/1103.0398) has shown that using embeddings pretrained on a large unlabelled corpus as initialization is beneficial, particularly when training on only a small number of labelled examples. The most popular pretrained embeddings is [word2vec](https://www.tensorflow.org/tutorials/word2vec). Leveraging knowledge from unlabeled data via pretrained embeddings is an instance of *[transfer learning](http://ruder.io/transfer-learning/)*.
+Most of the models that we have shown before, rely on word embeddings as a first layer to increase performance. So far, we have initialized them randomly. However, [much](https://arxiv.org/abs/1607.01759) [previous](https://arxiv.org/abs/1301.3781) [work](https://arxiv.org/abs/1103.0398) has shown that using embeddings pretrained on a large unlabelled corpus as initialization is beneficial, particularly when training on only a small number of labelled examples. The most popular pretrained embeddings is [word2vec](https://www.tensorflow.org/tutorials/word2vec). Leveraging knowledge from unlabeled data via pretrained embeddings is an instance of *[transfer learning](http://ruder.io/transfer-learning/)*.
 
 To this end, we will show you how to use pretrained embeddings in an `Estimator`. We will use the pre-trained vectors from another popular model, [GloVe](https://nlp.stanford.edu/projects/glove/).
 ```python
@@ -317,5 +317,5 @@ RpYW4gUnVkZXJcbnRhZ3M6IFRlbnNvckZsb3csIEVzdGltYXRv
 ciwgTkxQXG5jYXRlZ29yaWVzOiBUZW5zb3JGbG93LCBFc3RpbW
 F0b3IsIE5MUFxuI2V4Y2VycHQ6XG4jZmVhdHVyZWRJbWFnZTpc
 biNzdGF0dXM6IGRyYWZ0XG5kYXRlOiAyMDE4LTAyLTE1IDExOj
-AwOjAwXG4iLCJoaXN0b3J5IjpbNzgyMjc2ODEzXX0=
+AwOjAwXG4iLCJoaXN0b3J5IjpbMTg4Mjc4OTc5Ml19
 -->
