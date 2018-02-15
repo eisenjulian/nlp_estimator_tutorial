@@ -261,7 +261,7 @@ scaffold = tf.train.Scaffold(init_fn=init_fn)
 
 ### Running TensorBoard
 
-Now we can launch Tensorboard and see how the different models we've trained compare against each other in terms of training time and performance.
+Now we can launch TensorBoard and see how the different models we've trained compare against each other in terms of training time and performance.
 
 In a terminal, we run
 ```bash
@@ -317,5 +317,5 @@ RpYW4gUnVkZXJcbnRhZ3M6IFRlbnNvckZsb3csIEVzdGltYXRv
 ciwgTkxQXG5jYXRlZ29yaWVzOiBUZW5zb3JGbG93LCBFc3RpbW
 F0b3IsIE5MUFxuI2V4Y2VycHQ6XG4jZmVhdHVyZWRJbWFnZTpc
 biNzdGF0dXM6IGRyYWZ0XG5kYXRlOiAyMDE4LTAyLTE1IDExOj
-AwOjAwXG4iLCJoaXN0b3J5IjpbLTE4OTM0OTExNzldfQ==
+AwOjAwXG4iLCJoaXN0b3J5IjpbLTEyNTMyNDY0MTFdfQ==
 -->
