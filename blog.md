@@ -308,5 +308,14 @@ For more details, be sure to check out:
 In a following post, we will show how to build a model using eager execution, work with out-of memory datasets, train in Cloud ML, and deploy with TensorFlow Serving.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODA2MTU5MDY2XX0=
+eyJwcm9wZXJ0aWVzIjoiIyBBZGQgY3VzdG9tIHByb3BlcnRpZX
+MgZm9yIHRoZSBjdXJyZW50IGZpbGUgaGVyZVxuIyB0byBvdmVy
+cmlkZSB0aGUgZGVmYXVsdCBwcm9wZXJ0aWVzLlxudGl0bGU6IE
+NsYXNzaWZ5aW5nIHRleHQgd2l0aCBUZW5zb3JGbG93IEVzdGlt
+YXRvcnNcbmF1dGhvcjogU2ViYXN0aWFuIFJ1ZGVyLCBTZWJhc3
+RpYW4gUnVkZXJcbnRhZ3M6IFRlbnNvckZsb3csIEVzdGltYXRv
+ciwgTkxQXG5jYXRlZ29yaWVzOiBUZW5zb3JGbG93LCBFc3RpbW
+F0b3IsIE5MUFxuI2V4Y2VycHQ6XG4jZmVhdHVyZWRJbWFnZTpc
+biNzdGF0dXM6IGRyYWZ0XG5kYXRlOiAyMDE4LTAyLTE1IDExOj
+AwOjAwXG4iLCJoaXN0b3J5IjpbLTEyNTk1NDc1MTRdfQ==
 -->
