@@ -251,7 +251,7 @@ for w, i in word_index.items():
         embedding_matrix[i] = v
 ```
 
-Finally, we can use the [`tf.train.Scaffold`](https://www.tensorflow.org/api_docs/python/tf/train/Scaffold) property in the `EstimatorSpec` returned by our `model_fn` to instruct TensorFlow to initialize our embedding variable using this matrix the first time , after that the model will we loaded from a saved checkpoint.
+Finally, we can use the [`tf.train.Scaffold`](https://www.tensorflow.org/api_docs/python/tf/train/Scaffold) property in the `EstimatorSpec` returned by our `model_fn` to instruct TensorFlow to initialize our embedding variable using this matrix the first time, after which the model will be loaded from a saved checkpoint.
 
 ```python
 def init_fn(scaffold, sess):
@@ -308,5 +308,5 @@ For more details, be sure to check out:
 In a following post, we will show how to build a model using eager execution, work with out-of0memory datasets, train in Cloud ML, and deploy with TensorFlow Serving.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzg4MTYyMTI3XX0=
+eyJoaXN0b3J5IjpbLTEyNjc2NjEwNzhdfQ==
 -->
