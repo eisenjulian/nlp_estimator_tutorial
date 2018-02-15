@@ -266,11 +266,9 @@ In a terminal, we run
 ```bash
 > tensorboard --logdir=/tmp/exp
 ```
-Now we can visualize the model 
+Now, we can visualize each of the model loss values while training and testing, as well as accuracy and of course the precision recall. This information would help us choose adecuate thresho
 
-Solarized dark             |  Solarized Ocean
-:-------------------------:|:-------------------------:
-![](https://...Ocean.png)  |  ![](https://...Dark.png)
+![](https://raw.githubusercontent.com/eisenjulian/nlp_estimator_tutorial/master/pr.png)
 
 ### Getting Predictions
 
@@ -310,5 +308,5 @@ For more details, be sure to check out:
 In a following post we will show how to build a model using eagear execution, work with out of memory datasets, train in Cloud ML and deploy with TensorFlow Serving.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTIxMjgwMzI0XX0=
+eyJoaXN0b3J5IjpbNzMzODg1OTEyXX0=
 -->
