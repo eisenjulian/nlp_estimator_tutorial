@@ -305,8 +305,8 @@ For more details, be sure to check out:
  * A [Jupyer notebook](https://github.com) that can run locally, or on Colaboratory.
  * The TensorFlow [Vector Representation of Words](https://www.tensorflow.org/tutorials/word2vec) tutorial.
 
-In a following post, we will show how to build a model using eager execution, work with out-of0memory datasets, train in Cloud ML, and deploy with TensorFlow Serving.
+In a following post, we will show how to build a model using eager execution, work with out-of memory datasets, train in Cloud ML, and deploy with TensorFlow Serving.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyNjc2NjEwNzhdfQ==
+eyJoaXN0b3J5IjpbODA2MTU5MDY2XX0=
 -->
