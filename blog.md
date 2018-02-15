@@ -206,7 +206,7 @@ train_and_evaluate(cnn_classifier)
 
 Using the `Estimator` API and the same model `head`, we can also create a classifier that uses a *Long Short-Term Memory* (*LSTM*) cell instead of convolutions. Recurrent models such as this are some of the most successful building blocks for NLP applications. An LSTM processes the entire document sequentially, recursing over the sequence with its cell while storing the current state of the sequence in its memory.
 
-Each layer processes
+Each cell processes one token embedding at a time updating its internal state based on a differntiable computation that depends
 
 **LSTM Architecture**![](http://colah.github.io/posts/2015-08-Understanding-LSTMs/img/LSTM3-chain.png)
 **LSTM Architecture**
@@ -311,5 +311,5 @@ For more details, be sure to check out:
 In a following post, we will show how to build a model using eager execution, work with out-of0memory datasets, train in Cloud ML, and deploy with TensorFlow Serving.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk3MjYzNDc3OV19
+eyJoaXN0b3J5IjpbLTIwOTcyMzYyMDhdfQ==
 -->
