@@ -129,7 +129,7 @@ We can use TensorBoard to visualize a our $50$-dimensional word vectors projecte
 
 ### Convolutions
 
-At this point one possible apprach would be to go deeper, further adding more fully connected layers and playing around with layer sizes and training functions. However, by doing that we would add extra complexity and ignore important structure in our sentences. Words do not live in a vacuum and meaning is compositional, formed by words and its neighbours.
+At this point one possible approach would be to go deeper, further adding more fully connected layers and playing around with layer sizes and training functions. However, by doing that we would add extra complexity and ignore important structure in our sentences. Words do not live in a vacuum and meaning is compositional, formed by words and its neighbours.
 
 Convolutions are one way to take advantage of this structure, similar to how we can model salient clusters of pixels for [image classification](https://www.tensorflow.org/tutorials/layers). The intuition is that certain sequences of words, or *n-grams*, usually have the same meaning regardless of their overall position in the sentence. Introducing a structural prior via the convolution operation allows us to model the interaction between neighbouring words and consequently gives us a better way to represent such meaning.
 
@@ -304,5 +304,5 @@ For more details, be sure to check out:
 In a following post, we will show how to build a model using eager execution, work with out-of0memory datasets, train in Cloud ML, and deploy with TensorFlow Serving.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTg0NjY0Nzg1M119
+eyJoaXN0b3J5IjpbLTYzMzAxMTc5Nl19
 -->
