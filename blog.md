@@ -266,6 +266,7 @@ In a terminal, we run
 ```bash
 > tensorboard --logdir=/tmp/exp
 ```
+Now we can visualize the model 
 
 ### Getting Predictions
 
@@ -305,5 +306,5 @@ For more details, be sure to check out:
 In a following post we will show how to build a model using eagear execution, work with out of memory datasets, train in Cloud ML and deploy with TensorFlow Serving.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTY2MDQzNTE2Nl19
+eyJoaXN0b3J5IjpbMjAyMTEyOTgyMF19
 -->
