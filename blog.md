@@ -293,7 +293,7 @@ def print_predictions(sentences, classifier):
 
 It is worth noting that the checkpoint itself is not sufficient to make predictions; the actual code used to build the estimator is necessary as well in order to map the saved weights to the corresponding tensors. It's a good practice to associate saved checkpoints with the branch of code with which they were created.
 
-If your are interested in exporting the models to disk in a fully recoverable way, you might want to look into the [SavedModel](https://www.tensorflow.org/programmers_guide/saved_model#using_savedmodel_with_estimators) class, which is especially for serving your model through an API using [TensorFlow Serving](https://github.com/tensorflow/serving).
+If you are interested in exporting the models to disk in a fully recoverable way, you might want to look into the [SavedModel](https://www.tensorflow.org/programmers_guide/saved_model#using_savedmodel_with_estimators) class, which is especially for serving your model through an API using [TensorFlow Serving](https://github.com/tensorflow/serving).
 
 ### Summary
 
@@ -302,7 +302,7 @@ In this blog post, we explored how to use estimators for text classification, in
 For more details, be sure to check out:
 
  * The complete [source code](https://github.com) for this blog post.
- * A [Jupyer notebook](https://github.com) that can run locally, or on Colaboratory.
+ * A [Jupyter notebook](https://github.com) that can run locally, or on Colaboratory.
  * The TensorFlow [Vector Representation of Words](https://www.tensorflow.org/tutorials/word2vec) tutorial.
 
 In a following post, we will show how to build a model using eager execution, work with out-of-memory datasets, train in Cloud ML, and deploy with TensorFlow Serving.
@@ -317,5 +317,5 @@ RpYW4gUnVkZXJcbnRhZ3M6IFRlbnNvckZsb3csIEVzdGltYXRv
 ciwgTkxQXG5jYXRlZ29yaWVzOiBUZW5zb3JGbG93LCBFc3RpbW
 F0b3IsIE5MUFxuI2V4Y2VycHQ6XG4jZmVhdHVyZWRJbWFnZTpc
 biNzdGF0dXM6IGRyYWZ0XG5kYXRlOiAyMDE4LTAyLTE1IDExOj
-AwOjAwXG4iLCJoaXN0b3J5IjpbLTEyNTMyNDY0MTFdfQ==
+AwOjAwXG4iLCJoaXN0b3J5IjpbMTEwMDAyODY4N119
 -->
