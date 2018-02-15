@@ -206,11 +206,11 @@ train_and_evaluate(cnn_classifier)
 
 Using the `Estimator` API and the same model `head`, we can also create a classifier that uses a *Long Short-Term Memory* (*LSTM*) cell instead of convolutions. Recurrent models such as this are some of the most successful building blocks for NLP applications. An LSTM processes the entire document sequentially, recursing over the sequence with its cell while storing the current state of the sequence in its memory.
 
-Each cell processes one token embedding at a time updating its internal state based on a differentiable computation that depends on both that vector $x_t$ and its previous state $h_{t-1}$. There's a great explanation about the logic behind that at [this post](http://colah.github.io/posts/2015-08-Understanding-LSTMs/) in [Christopher Olah](https://github.com/colah)'s blog. Actually, everthing there is a must read!
+Each cell processes one token embedding at a time updating its internal state based on a differentiable computation that depends on both that vector $x_t$ and its previous state $h_{t-1}$. There's a great explanation about the logic behind that at [this post](http://colah.github.io/posts/2015-08-Understanding-LSTMs/) on [Christopher Olah](https://github.com/colah)'s blog. Actually, everthing there is a must read!
 
 ![](http://colah.github.io/posts/2015-08-Understanding-LSTMs/img/LSTM3-chain.png)
 
-The overall model looks like this:
+The overall model will end up looking like this:
 ```mermaid
 graph LR
     id1(Embedding Layer) --> id2(LSTM Cell) 
@@ -308,5 +308,5 @@ For more details, be sure to check out:
 In a following post, we will show how to build a model using eager execution, work with out-of0memory datasets, train in Cloud ML, and deploy with TensorFlow Serving.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTUyMzgwMjg3OF19
+eyJoaXN0b3J5IjpbLTkyOTM3MzQ5XX0=
 -->
