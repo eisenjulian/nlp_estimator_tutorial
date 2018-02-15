@@ -268,6 +268,10 @@ In a terminal, we run
 ```
 Now we can visualize the model 
 
+Solarized dark             |  Solarized Ocean
+:-------------------------:|:-------------------------:
+![](https://...Ocean.png)  |  ![](https://...Dark.png)
+
 ### Getting Predictions
 
 To get predictions on new sentences we can use the `predict` method in the `Estimator` instances, which will load the latest checkpoint for each model and evaluate on the unseen examples. But before passing the data into the model we have to clean up, tokenize and map each token to the corresponding index, as shown here.
@@ -306,5 +310,5 @@ For more details, be sure to check out:
 In a following post we will show how to build a model using eagear execution, work with out of memory datasets, train in Cloud ML and deploy with TensorFlow Serving.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjAyMTEyOTgyMF19
+eyJoaXN0b3J5IjpbMTIxMjgwMzI0XX0=
 -->
