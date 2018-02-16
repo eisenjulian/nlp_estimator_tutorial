@@ -304,6 +304,7 @@ For more details, be sure to check out:
  * The complete [source code](https://github.com) for this blog post.
  * A [Jupyter notebook](https://github.com) that can run locally, or on Colaboratory.
  * The TensorFlow [Vector Representation of Words](https://www.tensorflow.org/tutorials/word2vec) tutorial.
+ * NLTK
 
 In a following post, we will show how to build a model using eager execution, work with out-of-memory datasets, train in Cloud ML, and deploy with TensorFlow Serving.
 
@@ -320,5 +321,5 @@ RpYW4gUnVkZXJcbnRhZ3M6IFRlbnNvckZsb3csIEVzdGltYXRv
 ciwgTkxQXG5jYXRlZ29yaWVzOiBUZW5zb3JGbG93LCBFc3RpbW
 F0b3IsIE5MUFxuI2V4Y2VycHQ6XG4jZmVhdHVyZWRJbWFnZTpc
 biNzdGF0dXM6IGRyYWZ0XG5kYXRlOiAyMDE4LTAyLTE1IDExOj
-AwOjAwXG4iLCJoaXN0b3J5IjpbNzIwOTM4MzBdfQ==
+AwOjAwXG4iLCJoaXN0b3J5IjpbLTE5MDk5Mzk0NTNdfQ==
 -->
