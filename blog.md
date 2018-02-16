@@ -123,7 +123,7 @@ classifier = tf.estimator.LinearClassifier(
 train_and_evaluate(classifier)
 ```    
 
-We can use TensorBoard to visualize a our $50$-dimensional word vectors projected into $\mathbb{R}^3$ using [t-SNE](https://en.wikipedia.org/wiki/T-distributed_stochastic_neighbor_embedding). We expect similar words to be close to each other. This can be a useful way to inspect our model weights and find unexpected behaviours. There is plenty of information available to [explore further](https://www.tensorflow.org/programmers_guide/embedding).
+We can use TensorBoard to visualize a our $50$-dimensional word vectors projected into $\mathbb{R}^3$ using [t-SNE](https://en.wikipedia.org/wiki/T-distributed_stochastic_neighbor_embedding). We expect similar words to be close to each other. This can be a useful way to inspect our model weights and find unexpected behaviours.
 
 ![embeddings](https://raw.githubusercontent.com/eisenjulian/nlp_estimator_tutorial/master/embeddings.png)
 
@@ -308,6 +308,8 @@ For more details, be sure to check out:
 In a following post, we will show how to build a model using eager execution, work with out-of-memory datasets, train in Cloud ML, and deploy with TensorFlow Serving.
 
 We are not covering these techniques in this post, but you can take a look at [this chapter](http://www.nltk.org/book/ch03.html) of the *NLTK* book to learn more.
+
+There is plenty of information available to [explore further](https://www.tensorflow.org/programmers_guide/embedding).
 <!--stackedit_data:
 eyJwcm9wZXJ0aWVzIjoiIyBBZGQgY3VzdG9tIHByb3BlcnRpZX
 MgZm9yIHRoZSBjdXJyZW50IGZpbGUgaGVyZVxuIyB0byBvdmVy
@@ -318,5 +320,5 @@ RpYW4gUnVkZXJcbnRhZ3M6IFRlbnNvckZsb3csIEVzdGltYXRv
 ciwgTkxQXG5jYXRlZ29yaWVzOiBUZW5zb3JGbG93LCBFc3RpbW
 F0b3IsIE5MUFxuI2V4Y2VycHQ6XG4jZmVhdHVyZWRJbWFnZTpc
 biNzdGF0dXM6IGRyYWZ0XG5kYXRlOiAyMDE4LTAyLTE1IDExOj
-AwOjAwXG4iLCJoaXN0b3J5IjpbMTQ0NzI0OTczOV19
+AwOjAwXG4iLCJoaXN0b3J5IjpbNTIxMjcwNDA3XX0=
 -->
