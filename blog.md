@@ -305,7 +305,7 @@ For more details, be sure to check out:
  * A [Jupyter notebook](https://github.com) that can run locally, or on Colaboratory.
  * The TensorFlow [Embedding](https://www.tensorflow.org/programmers_guide/embedding) guide.
  * The TensorFlow [Vector Representation of Words](https://www.tensorflow.org/tutorials/word2vec) tutorial.
- * The *NLTK* [Processing Raw Text](http://www.nltk.org/book/ch03.html) chapter on how to build 
+ * The *NLTK* [Processing Raw Text](http://www.nltk.org/book/ch03.html) chapter on how to design langage pipelines.
 
 In a following post, we will show how to build a model using eager execution, work with out-of-memory datasets, train in Cloud ML, and deploy with TensorFlow Serving.
 <!--stackedit_data:
@@ -318,5 +318,5 @@ RpYW4gUnVkZXJcbnRhZ3M6IFRlbnNvckZsb3csIEVzdGltYXRv
 ciwgTkxQXG5jYXRlZ29yaWVzOiBUZW5zb3JGbG93LCBFc3RpbW
 F0b3IsIE5MUFxuI2V4Y2VycHQ6XG4jZmVhdHVyZWRJbWFnZTpc
 biNzdGF0dXM6IGRyYWZ0XG5kYXRlOiAyMDE4LTAyLTE1IDExOj
-AwOjAwXG4iLCJoaXN0b3J5IjpbNjU5NTcxMTI2XX0=
+AwOjAwXG4iLCJoaXN0b3J5IjpbNzA0MzU0MDg4XX0=
 -->
