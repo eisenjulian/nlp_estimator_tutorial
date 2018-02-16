@@ -303,6 +303,7 @@ For more details, be sure to check out:
 
  * The complete [source code](https://github.com) for this blog post.
  * A [Jupyter notebook](https://github.com) that can run locally, or on Colaboratory.
+ * The TensorFlow [Embedding](https://www.tensorflow.org/programmers_guide/embedding) guide.
  * The TensorFlow [Vector Representation of Words](https://www.tensorflow.org/tutorials/word2vec) tutorial.
  * [NLTK 3^{rd}]
 
@@ -310,7 +311,7 @@ In a following post, we will show how to build a model using eager execution, wo
 
 We are not covering these techniques in this post, but you can take a look at [this chapter](http://www.nltk.org/book/ch03.html) of the *NLTK* book to learn more.
 
-There is plenty of information available to [explore further](https://www.tensorflow.org/programmers_guide/embedding).
+There is plenty of information available to [explore further].
 <!--stackedit_data:
 eyJwcm9wZXJ0aWVzIjoiIyBBZGQgY3VzdG9tIHByb3BlcnRpZX
 MgZm9yIHRoZSBjdXJyZW50IGZpbGUgaGVyZVxuIyB0byBvdmVy
@@ -321,5 +322,5 @@ RpYW4gUnVkZXJcbnRhZ3M6IFRlbnNvckZsb3csIEVzdGltYXRv
 ciwgTkxQXG5jYXRlZ29yaWVzOiBUZW5zb3JGbG93LCBFc3RpbW
 F0b3IsIE5MUFxuI2V4Y2VycHQ6XG4jZmVhdHVyZWRJbWFnZTpc
 biNzdGF0dXM6IGRyYWZ0XG5kYXRlOiAyMDE4LTAyLTE1IDExOj
-AwOjAwXG4iLCJoaXN0b3J5IjpbLTE4MTUwMjQyMzJdfQ==
+AwOjAwXG4iLCJoaXN0b3J5IjpbLTQzNDk0Mzc1XX0=
 -->
