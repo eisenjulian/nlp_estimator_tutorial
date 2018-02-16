@@ -53,7 +53,7 @@ It's good practice to start any machine learning project trying basic baselines.
 
 With that in mind, let us start by trying out one of the simplest models for text classification. That would be a sparse linear model that gives a weight to each token and adds up all of the results, regardless of the order. As this model does not care about the order of words in a sentence, we normally refer to it as a *Bag-of-Words* approach. Let's see how we can implement this model using an `Estimator`.
 
-We start out by defining the feature column that is used as input to our classifier. As we have seen in [Part 2](https://developers.googleblog.com/2017/11/introducing-tensorflow-feature-columns.html), `categorical_column_with_identity` is the right choice for text input. We can now use the pre-made `LinearClassifier`.
+We start out by defining the feature column that is used as input to our classifier. As we have seen in [Part 2](https://developers.googleblog.com/2017/11/introducing-tensorflow-feature-columns.html), `categorical_column_with_identity` is the right choice for a discrete set that has already been mapped to indexes. We can now use the pre-made `LinearClassifier`.
 
 ```python
 column = tf.feature_column.categorical_column_with_identity('x', vocab_size)
@@ -307,6 +307,7 @@ For more details, be sure to check out:
 
 In a following post, we will show how to build a model using eager execution, work with out-of-memory datasets, train in Cloud ML, and deploy with TensorFlow Serving.
 
+We are not covering these techniques in this post, but you can take a look at [this chapter](http://www.nltk.org/book/ch03.html) of the *NLTK* book to learn more.
 <!--stackedit_data:
 eyJwcm9wZXJ0aWVzIjoiIyBBZGQgY3VzdG9tIHByb3BlcnRpZX
 MgZm9yIHRoZSBjdXJyZW50IGZpbGUgaGVyZVxuIyB0byBvdmVy
@@ -317,5 +318,5 @@ RpYW4gUnVkZXJcbnRhZ3M6IFRlbnNvckZsb3csIEVzdGltYXRv
 ciwgTkxQXG5jYXRlZ29yaWVzOiBUZW5zb3JGbG93LCBFc3RpbW
 F0b3IsIE5MUFxuI2V4Y2VycHQ6XG4jZmVhdHVyZWRJbWFnZTpc
 biNzdGF0dXM6IGRyYWZ0XG5kYXRlOiAyMDE4LTAyLTE1IDExOj
-AwOjAwXG4iLCJoaXN0b3J5IjpbMzIxODMyMDY2XX0=
+AwOjAwXG4iLCJoaXN0b3J5IjpbMTQ0NzI0OTczOV19
 -->
