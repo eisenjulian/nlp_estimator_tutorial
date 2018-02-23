@@ -23,8 +23,15 @@ After we've loaded the data in memory we pad each of the sentences with zeroes t
 vocab_size = 5000
 sentence_size = 200
 (x_train_variable, y_train), (x_test_variable, y_test) = imdb.load_data(num_words=vocab_size)
-x_train = sequence.pad_sequences(x_train_variable, maxlen=sentence_size)
-x_test = sequence.pad_sequences(x_test_variable, maxlen=sentence_size)
+x_train = sequence.pad_sequences(
+  x_train_variable, 
+  maxlen=sentence_size, 
+  padding='post', value=-1)
+x_test = sequence.pad_sequences(
+  x_test_variable,
+   maxlen=sentence_size, 
+   padding='post', 
+   value=-1)
 ```
 
 ### Input Functions
@@ -318,5 +325,5 @@ RpYW4gUnVkZXJcbnRhZ3M6IFRlbnNvckZsb3csIEVzdGltYXRv
 ciwgTkxQXG5jYXRlZ29yaWVzOiBUZW5zb3JGbG93LCBFc3RpbW
 F0b3IsIE5MUFxuI2V4Y2VycHQ6XG4jZmVhdHVyZWRJbWFnZTpc
 biNzdGF0dXM6IGRyYWZ0XG5kYXRlOiAyMDE4LTAyLTE1IDExOj
-AwOjAwXG4iLCJoaXN0b3J5IjpbMTk0MjA3NjUxMV19
+AwOjAwXG4iLCJoaXN0b3J5IjpbLTE0Mzc5MjU2OTFdfQ==
 -->
