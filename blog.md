@@ -37,21 +37,31 @@ x_test = sequence.pad_sequences(
 
 ### Input Functions
 
-The Estimator framework uses *input functions* to split the data pipeline from the model itself. Several helper methods are available to create them, whether your data is in a `.csv` file, or in a `pandas.DataFrame`, whether it fits in memory or not. In our case, we can use `numpy_input_fn` for both the train and test sets.
+The Estimator framework uses *input functions* to split the data pipeline from the model itself. Several helper methods are available to create them, whether your data is in a `.csv` file, or in a `pandas.DataFrame`, whether it fits in memory or not. In our case, we can use `Dataset.from_tensor_slices` for both the train and test sets.
 
 ```python
-train_input_fn = tf.estimator.inputs.numpy_input_fn(
-    x={"x": x_train, "len": np.array([max(len(x), sentence_size) for x in x_train_variable])},
-    y=y_train,
-    batch_size=100,
-    num_epochs=None,
-    shuffle=True)
+x_len_train = np.array([min(len(x), sentence_size) for x in x_train_variable])
+x_len_test = np.array([min(len(x), sentence_size) for x in x_test_variable])
 
-eval_input_fn = tf.estimator.inputs.numpy_input_fn(
-    x={"x": x_test, "len": np.array([max(len(x), sentence_size) for x in x_test_variable])},
-    y=y_test,
-    num_epochs=1,
-    shuffle=False)
+def parser(x, length, y):
+    features = {"x": x, "len": length}
+    return features, y
+
+def train_input_fn():
+    dataset = tf.data.Dataset.from_tensor_slices((x_train, x_len_train, y_train))
+    dataset = dataset.shuffle(buffer_size=25000)
+    dataset = dataset.batch(100)
+    dataset = dataset.map(parser)
+    dataset = dataset.repeat()
+    iterator = dataset.make_one_shot_iterator()
+    return iterator.get_next()
+
+def eval_input_fn():
+    dataset = tf.data.Dataset.from_tensor_slices((x_test, x_len_test, y_test))
+    dataset = dataset.batch(100)
+    dataset = dataset.map(parser)
+    iterator = dataset.make_one_shot_iterator()
+    return iterator.get_next()
 ```
 We shuffle the training data and do not predefine the number of epochs we want to train, while we only need one epoch of the test data for evaluation. We also add an additional `"len"` key that captures the length of the original, unpadded sequence, which we will use later.
 
@@ -321,5 +331,5 @@ RpYW4gUnVkZXJcbnRhZ3M6IFRlbnNvckZsb3csIEVzdGltYXRv
 ciwgTkxQXG5jYXRlZ29yaWVzOiBUZW5zb3JGbG93LCBFc3RpbW
 F0b3IsIE5MUFxuI2V4Y2VycHQ6XG4jZmVhdHVyZWRJbWFnZTpc
 biNzdGF0dXM6IGRyYWZ0XG5kYXRlOiAyMDE4LTAyLTE1IDExOj
-AwOjAwXG4iLCJoaXN0b3J5IjpbMTAzNzk3NzMzMV19
+AwOjAwXG4iLCJoaXN0b3J5IjpbLTE4MzAxNDA0MjNdfQ==
 -->
