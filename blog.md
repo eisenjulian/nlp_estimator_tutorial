@@ -146,7 +146,7 @@ At this point one possible approach would be to go deeper, further adding more f
 
 Convolutions are one way to take advantage of this structure, similar to how we can model salient clusters of pixels for [image classification](https://www.tensorflow.org/tutorials/layers). The intuition is that certain sequences of words, or *n-grams*, usually have the same meaning regardless of their overall position in the sentence. Introducing a structural prior via the convolution operation allows us to model the interaction between neighboring words and consequently gives us a better way to represent such meaning.
 
-The following image shows how a filter matrix $F \in \mathbb{R}^{d\times m}$ slides across each $3$-gram window of tokens to build a new feature map. Afterwards a *pooling* layer is usually applied to combine the results.
+The following image shows how a filter matrix $F \in \mathbb{R}^{d\times m}$ slides across each $3$-gram window of tokens to build a new feature map. Afterwards a *pooling* layer is usually applied to combine adjacent results.
 
 ![text convolution](https://raw.githubusercontent.com/eisenjulian/nlp_estimator_tutorial/master/conv.png)
 
@@ -223,7 +223,7 @@ train_and_evaluate(cnn_classifier)
 
 Using the `Estimator` API and the same model `head`, we can also create a classifier that uses a *Long Short-Term Memory* (*LSTM*) cell instead of convolutions. Recurrent models such as this are some of the most successful building blocks for NLP applications. An LSTM processes the entire document sequentially, recursing over the sequence with its cell while storing the current state of the sequence in its memory.
 
-One the benefits of CNNs over LSTMs is the simple architecture usually provides better convergence without much parameter massaging. LSTMs (and RNNs in general) tend to suffer convergence issues like vanishing or exploding gradients, that said, with enough tweaking they can get to state-of-the-art results.
+One the benefits of CNNs over LSTMs is the simple architecture usually provides faster training and better convergence without much parameter massaging. LSTMs (and RNNs in general) tend to suffer convergence issues like vanishing or exploding gradients, that said, with enough tweaking they can get to state-of-the-art results.
 
 Each cell processes one token embedding at a time updating its internal state based on a differentiable computation that depends on both that vector $x_t$ and its previous state $h_{t-1}$. There's a great explanation about the logic behind that at [this post](http://colah.github.io/posts/2015-08-Understanding-LSTMs/) on [Christopher Olah](https://github.com/colah)'s blog. Actually, everything there is a must read!
 
@@ -337,5 +337,5 @@ RpYW4gUnVkZXJcbnRhZ3M6IFRlbnNvckZsb3csIEVzdGltYXRv
 ciwgTkxQXG5jYXRlZ29yaWVzOiBUZW5zb3JGbG93LCBFc3RpbW
 F0b3IsIE5MUFxuI2V4Y2VycHQ6XG4jZmVhdHVyZWRJbWFnZTpc
 biNzdGF0dXM6IGRyYWZ0XG5kYXRlOiAyMDE4LTAyLTE1IDExOj
-AwOjAwXG4iLCJoaXN0b3J5IjpbLTY2MDMxMTg5MV19
+AwOjAwXG4iLCJoaXN0b3J5IjpbMTY5MjcxMTYxNl19
 -->
