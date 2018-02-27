@@ -146,7 +146,7 @@ At this point one possible approach would be to go deeper, further adding more f
 
 Convolutions are one way to take advantage of this structure, similar to how we can model salient clusters of pixels for [image classification](https://www.tensorflow.org/tutorials/layers). The intuition is that certain sequences of words, or *n-grams*, usually have the same meaning regardless of their overall position in the sentence. Introducing a structural prior via the convolution operation allows us to model the interaction between neighboring words and consequently gives us a better way to represent such meaning.
 
-The following image explains how a weight matrix $F \in \mathbb{R}^{d\times m}$ slides across a window of $3$-grams
+The following image explains how a filter matrix $F \in \mathbb{R}^{d\times m}$ slides across each window of 
 
 ![text convolution](https://raw.githubusercontent.com/eisenjulian/nlp_estimator_tutorial/master/conv.png)
 
@@ -337,5 +337,5 @@ RpYW4gUnVkZXJcbnRhZ3M6IFRlbnNvckZsb3csIEVzdGltYXRv
 ciwgTkxQXG5jYXRlZ29yaWVzOiBUZW5zb3JGbG93LCBFc3RpbW
 F0b3IsIE5MUFxuI2V4Y2VycHQ6XG4jZmVhdHVyZWRJbWFnZTpc
 biNzdGF0dXM6IGRyYWZ0XG5kYXRlOiAyMDE4LTAyLTE1IDExOj
-AwOjAwXG4iLCJoaXN0b3J5IjpbNTA3ODYyNTA5XX0=
+AwOjAwXG4iLCJoaXN0b3J5IjpbNDcyNDk2MDY1XX0=
 -->
