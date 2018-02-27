@@ -146,7 +146,9 @@ At this point one possible approach would be to go deeper, further adding more f
 
 Convolutions are one way to take advantage of this structure, similar to how we can model salient clusters of pixels for [image classification](https://www.tensorflow.org/tutorials/layers). The intuition is that certain sequences of words, or *n-grams*, usually have the same meaning regardless of their overall position in the sentence. Introducing a structural prior via the convolution operation allows us to model the interaction between neighboring words and consequently gives us a better way to represent such meaning.
 
-![enter image description here](https://www.researchgate.net/profile/Aliaksei_Severyn/publication/275886528/figure/fig1/AS:294638272434176@1447258646161/The-architecture-of-our-deep-learning-model-for-sentiment-classification.png)
+
+
+![text convolution](https://raw.githubusercontent.com/eisenjulian/nlp_estimator_tutorial/master/conv.png)
 
 Let us look at a sample model architecture. The use of dropout layers is a regularization technique that makes the model less likely to overfit.
 
@@ -335,5 +337,5 @@ RpYW4gUnVkZXJcbnRhZ3M6IFRlbnNvckZsb3csIEVzdGltYXRv
 ciwgTkxQXG5jYXRlZ29yaWVzOiBUZW5zb3JGbG93LCBFc3RpbW
 F0b3IsIE5MUFxuI2V4Y2VycHQ6XG4jZmVhdHVyZWRJbWFnZTpc
 biNzdGF0dXM6IGRyYWZ0XG5kYXRlOiAyMDE4LTAyLTE1IDExOj
-AwOjAwXG4iLCJoaXN0b3J5IjpbOTk2NDA5NjddfQ==
+AwOjAwXG4iLCJoaXN0b3J5IjpbNTQ5NjgxNTA3XX0=
 -->
