@@ -183,13 +183,8 @@ conv = tf.layers.conv1d(
     kernel_size=3,
     padding="same",
     activation=tf.nn.relu)
-pool = tf.layers.max_pooling1d(
-    inputs=conv, 
-    padding="valid", 
-    pool_size=sentence_size, 
-    strides=sentence_size)
-flat = tf.layers.flatten(inputs=pool)
-hidden = tf.layers.dense(inputs=flat, units=250, activation=tf.nn.relu)
+pool = tf.reduce_max(input_tensor=conv, axis=1)
+hidden = tf.layers.dense(inputs=pool, units=250, activation=tf.nn.relu)
 dropout = tf.layers.dropout(inputs=hidden, rate=0.2, training=training)
 logits = tf.layers.dense(inputs=dropout_hidden, units=1)
 ```
@@ -337,5 +332,5 @@ RpYW4gUnVkZXJcbnRhZ3M6IFRlbnNvckZsb3csIEVzdGltYXRv
 ciwgTkxQXG5jYXRlZ29yaWVzOiBUZW5zb3JGbG93LCBFc3RpbW
 F0b3IsIE5MUFxuI2V4Y2VycHQ6XG4jZmVhdHVyZWRJbWFnZTpc
 biNzdGF0dXM6IGRyYWZ0XG5kYXRlOiAyMDE4LTAyLTE1IDExOj
-AwOjAwXG4iLCJoaXN0b3J5IjpbOTM0MDAyMjQ0XX0=
+AwOjAwXG4iLCJoaXN0b3J5IjpbLTEwMTcyNzI2MDNdfQ==
 -->
