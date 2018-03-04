@@ -272,7 +272,7 @@ for w, i in word_index.items():
         embedding_matrix[i] = v
 ```
 
-Finally, we can use a custom initializer function and pass it in the `params` object to our `cnn_model_fn` . 
+Finally, we can use a custom initializer function and pass it in the `params` object to our `cnn_model_fn` , without any modifications. 
 
 ```python custom_initializer.py
 def my_initializer(shape=None, dtype=tf.float32, partition_info=None):
@@ -345,5 +345,5 @@ RpYW4gUnVkZXJcbnRhZ3M6IFRlbnNvckZsb3csIEVzdGltYXRv
 ciwgTkxQXG5jYXRlZ29yaWVzOiBUZW5zb3JGbG93LCBFc3RpbW
 F0b3IsIE5MUFxuI2V4Y2VycHQ6XG4jZmVhdHVyZWRJbWFnZTpc
 biNzdGF0dXM6IGRyYWZ0XG5kYXRlOiAyMDE4LTAyLTE1IDExOj
-AwOjAwXG4iLCJoaXN0b3J5IjpbNTU4ODA3MDQ5XX0=
+AwOjAwXG4iLCJoaXN0b3J5IjpbNzk2MDgxNzJdfQ==
 -->
