@@ -82,7 +82,7 @@ classifier = tf.estimator.LinearClassifier(
 
 Finally, we create a simple function that trains the classifier and additionally creates a precision-recall curve. As we do not aim to maximize performance in this blog post, we only train our models for $25,000$ steps.
 
-```python
+```python r
 def train_and_evaluate(classifier):
     classifier.train(input_fn=train_input_fn, steps=25000)
     eval_results = classifier.evaluate(input_fn=eval_input_fn)
@@ -339,5 +339,5 @@ RpYW4gUnVkZXJcbnRhZ3M6IFRlbnNvckZsb3csIEVzdGltYXRv
 ciwgTkxQXG5jYXRlZ29yaWVzOiBUZW5zb3JGbG93LCBFc3RpbW
 F0b3IsIE5MUFxuI2V4Y2VycHQ6XG4jZmVhdHVyZWRJbWFnZTpc
 biNzdGF0dXM6IGRyYWZ0XG5kYXRlOiAyMDE4LTAyLTE1IDExOj
-AwOjAwXG4iLCJoaXN0b3J5IjpbLTIxMzE5MzUwMF19
+AwOjAwXG4iLCJoaXN0b3J5IjpbLTEwODEwNDU4NzBdfQ==
 -->
