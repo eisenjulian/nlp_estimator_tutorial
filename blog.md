@@ -172,8 +172,9 @@ Writing a custom estimator means writing a `model_fn(features, labels, mode)` th
 
 ```python
 initializer = tf.random_uniform([vocab_size, embedding_size], -1.0, 1.0))
-embeddings = tf.get_variable('embeddings', initializer=initializer)
-input_layer = tf.nn.embedding_lookup(embeddings, features['x'])
+input_layer = tf.contrib.layers.embed_sequence(
+        features['x'], vocab_size, embedding_size,
+        initializer=initializer)
 ```
 Then we use `tf.layers` to process each output sequentially.
 ```python
@@ -334,5 +335,5 @@ RpYW4gUnVkZXJcbnRhZ3M6IFRlbnNvckZsb3csIEVzdGltYXRv
 ciwgTkxQXG5jYXRlZ29yaWVzOiBUZW5zb3JGbG93LCBFc3RpbW
 F0b3IsIE5MUFxuI2V4Y2VycHQ6XG4jZmVhdHVyZWRJbWFnZTpc
 biNzdGF0dXM6IGRyYWZ0XG5kYXRlOiAyMDE4LTAyLTE1IDExOj
-AwOjAwXG4iLCJoaXN0b3J5IjpbLTM2NTg4NjQzMV19
+AwOjAwXG4iLCJoaXN0b3J5IjpbLTg0MjY3NDAwNF19
 -->
