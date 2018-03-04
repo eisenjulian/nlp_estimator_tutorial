@@ -272,7 +272,7 @@ for w, i in word_index.items():
         embedding_matrix[i] = v
 ```
 
-Finally, we can use a custom initializer function and pass it down to in the `params ``model_fn` to instruct TensorFlow to initialize our embedding variable using this matrix the first time, after which the model will be loaded from a saved checkpoint.
+Finally, we can use a custom initializer function and pass it in the `params` object to our `cnn_model_fn` . 
 
 ```python custom_initializer.py
 def my_initializer(shape=None, dtype=tf.float32, partition_info=None):
@@ -345,5 +345,5 @@ RpYW4gUnVkZXJcbnRhZ3M6IFRlbnNvckZsb3csIEVzdGltYXRv
 ciwgTkxQXG5jYXRlZ29yaWVzOiBUZW5zb3JGbG93LCBFc3RpbW
 F0b3IsIE5MUFxuI2V4Y2VycHQ6XG4jZmVhdHVyZWRJbWFnZTpc
 biNzdGF0dXM6IGRyYWZ0XG5kYXRlOiAyMDE4LTAyLTE1IDExOj
-AwOjAwXG4iLCJoaXN0b3J5IjpbLTEyODE4NjA1NjRdfQ==
+AwOjAwXG4iLCJoaXN0b3J5IjpbLTUwNTk5NTIxOV19
 -->
