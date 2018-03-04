@@ -127,7 +127,7 @@ The next step of complexity we can add are word embeddings. Embeddings are a den
 
 A note for the keen observer: an `embedding_column` is just an efficient way of applying a fully connected layer to the sparse binary feature vector of tokens, which is multiplied by a constant depending of the chosen combiner. A direct consequence of this is that it wouldn't make sense to use an `embedding_column` directly in a `LinearClassifier` because two consecutive linear layers without non-linearities in between add no prediction power to the model, unless of course the embeddings are pre-trained.
 
-```python
+```python bow_dense_classifier.py
 embedding_size = 50
 word_embedding_column = tf.feature_column.embedding_column(
     column, dimension=embedding_size)
@@ -170,13 +170,13 @@ As seen in previous blog posts, the `tf.estimator` framework provides a high-lev
 
 Writing a custom estimator means writing a `model_fn(features, labels, mode, params)` that returns and `EstimatorSpec`. The first step will be mapping the features into our embedding layer:
 
-```python
+```python embeddings.py
 input_layer = tf.contrib.layers.embed_sequence(
         features['x'], vocab_size, embedding_size,
         initializer=params['embedding_initializer'])
 ```
 Then we use `tf.layers` to process each output sequentially.
-```python
+```python cnn_classifer.py
 training = (mode == tf.estimator.ModeKeys.TRAIN)
 dropout_emb = tf.layers.dropout(inputs=input_layer, 
                                 rate=0.2, 
@@ -339,5 +339,5 @@ RpYW4gUnVkZXJcbnRhZ3M6IFRlbnNvckZsb3csIEVzdGltYXRv
 ciwgTkxQXG5jYXRlZ29yaWVzOiBUZW5zb3JGbG93LCBFc3RpbW
 F0b3IsIE5MUFxuI2V4Y2VycHQ6XG4jZmVhdHVyZWRJbWFnZTpc
 biNzdGF0dXM6IGRyYWZ0XG5kYXRlOiAyMDE4LTAyLTE1IDExOj
-AwOjAwXG4iLCJoaXN0b3J5IjpbNjY2MDY2MTczXX0=
+AwOjAwXG4iLCJoaXN0b3J5IjpbMTEzNDgwODU0MF19
 -->
