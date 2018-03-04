@@ -19,7 +19,7 @@ For illustration, here's a piece of a negative review (with $2$ stars) in the da
 
 After we've loaded the data in memory we pad each of the sentences with zeroes to a fixed size (here: $200$) so that we have two $2$-dimensional $25000\times200$ arrays for training and testing respectively.
 
-```python
+```python load_data.py
 vocab_size = 5000
 sentence_size = 200
 (x_train_variable, y_train), (x_test_variable, y_test) = imdb.load_data(num_words=vocab_size)
@@ -39,7 +39,7 @@ x_test = sequence.pad_sequences(
 
 The Estimator framework uses *input functions* to split the data pipeline from the model itself. Several helper methods are available to create them, whether your data is in a `.csv` file, or in a `pandas.DataFrame`, whether it fits in memory or not. In our case, we can use `Dataset.from_tensor_slices` for both the train and test sets.
 
-```python
+```python input_function.py
 x_len_train = np.array([min(len(x), sentence_size) for x in x_train_variable])
 x_len_test = np.array([min(len(x), sentence_size) for x in x_test_variable])
 
@@ -73,7 +73,7 @@ With that in mind, let us start by trying out one of the simplest models for tex
 
 We start out by defining the feature column that is used as input to our classifier. As we have seen in [Part 2](https://developers.googleblog.com/2017/11/introducing-tensorflow-feature-columns.html), `categorical_column_with_identity` is the right choice for this pre-processed text input. If we were feeding raw text tokens other `feature_columns` could do a lot of the pre-processing for us. We can now use the pre-made `LinearClassifier`.
 
-```python
+```python bow_sparse_classifier.py
 column = tf.feature_column.categorical_column_with_identity('x', vocab_size)
 classifier = tf.estimator.LinearClassifier(
     feature_columns=[column], 
@@ -339,5 +339,5 @@ RpYW4gUnVkZXJcbnRhZ3M6IFRlbnNvckZsb3csIEVzdGltYXRv
 ciwgTkxQXG5jYXRlZ29yaWVzOiBUZW5zb3JGbG93LCBFc3RpbW
 F0b3IsIE5MUFxuI2V4Y2VycHQ6XG4jZmVhdHVyZWRJbWFnZTpc
 biNzdGF0dXM6IGRyYWZ0XG5kYXRlOiAyMDE4LTAyLTE1IDExOj
-AwOjAwXG4iLCJoaXN0b3J5IjpbMTEzNTkwNDk4Nl19
+AwOjAwXG4iLCJoaXN0b3J5IjpbLTIxMzE5MzUwMF19
 -->
