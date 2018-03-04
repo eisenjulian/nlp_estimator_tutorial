@@ -195,7 +195,7 @@ logits = tf.layers.dense(inputs=dropout_hidden, units=1)
 
 Finally, we will use a `Head` to simplify the writing of our last part of the `model_fn`. The head already knows how to compute predictions, loss, train_op, metrics and export outputs, and can be reused across models. This is also used in the pre-made estimators and provides us with the benefit of a uniform evaluation function across all of our models. We will use `_binary_logistic_head_with_sigmoid_cross_entropy_loss`, which is a head for single label binary classification that uses `sigmoid_cross_entropy_with_logits` as the loss function under the hood.
 
-```python
+```python model_head.py
 head = head_lib._binary_logistic_head_with_sigmoid_cross_entropy_loss()
 optimizer = tf.train.AdamOptimizer()    
 def _train_op_fn(loss):
@@ -339,5 +339,5 @@ RpYW4gUnVkZXJcbnRhZ3M6IFRlbnNvckZsb3csIEVzdGltYXRv
 ciwgTkxQXG5jYXRlZ29yaWVzOiBUZW5zb3JGbG93LCBFc3RpbW
 F0b3IsIE5MUFxuI2V4Y2VycHQ6XG4jZmVhdHVyZWRJbWFnZTpc
 biNzdGF0dXM6IGRyYWZ0XG5kYXRlOiAyMDE4LTAyLTE1IDExOj
-AwOjAwXG4iLCJoaXN0b3J5IjpbMTEzNDgwODU0MF19
+AwOjAwXG4iLCJoaXN0b3J5IjpbMTcxMDQ2MjM2M119
 -->
