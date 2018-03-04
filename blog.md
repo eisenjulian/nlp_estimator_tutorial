@@ -131,7 +131,8 @@ A note for the keen observer: an `embedding_column` is just an efficient way of 
 embedding_size = 50
 word_embedding_column = tf.feature_column.embedding_column(
     column, dimension=embedding_size)
-classifier = tf.estimator.LinearClassifier(
+classifier = tf.estimator.DNNClassifier(
+    hidden_units=[100],
     feature_columns=[word_embedding_column], 
     model_dir=os.path.join(model_dir, 'bow_embeddings'))
 train_and_evaluate(classifier)
@@ -333,5 +334,5 @@ RpYW4gUnVkZXJcbnRhZ3M6IFRlbnNvckZsb3csIEVzdGltYXRv
 ciwgTkxQXG5jYXRlZ29yaWVzOiBUZW5zb3JGbG93LCBFc3RpbW
 F0b3IsIE5MUFxuI2V4Y2VycHQ6XG4jZmVhdHVyZWRJbWFnZTpc
 biNzdGF0dXM6IGRyYWZ0XG5kYXRlOiAyMDE4LTAyLTE1IDExOj
-AwOjAwXG4iLCJoaXN0b3J5IjpbLTE4MjIzMDI2NzBdfQ==
+AwOjAwXG4iLCJoaXN0b3J5IjpbLTM2NTg4NjQzMV19
 -->
