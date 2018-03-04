@@ -25,9 +25,9 @@ sentence_size = 200
 (x_train_variable, y_train), (x_test_variable, y_test) = imdb.load_data(num_words=vocab_size)
 x_train = sequence.pad_sequences(
     x_train_variable, 
-	maxlen=sentence_size, 
-	padding='post', 
-	value=-1)
+    maxlen=sentence_size, 
+    padding='post', 
+    value=-1)
 x_test = sequence.pad_sequences(
     x_test_variable,
     maxlen=sentence_size, 
@@ -345,5 +345,5 @@ RpYW4gUnVkZXJcbnRhZ3M6IFRlbnNvckZsb3csIEVzdGltYXRv
 ciwgTkxQXG5jYXRlZ29yaWVzOiBUZW5zb3JGbG93LCBFc3RpbW
 F0b3IsIE5MUFxuI2V4Y2VycHQ6XG4jZmVhdHVyZWRJbWFnZTpc
 biNzdGF0dXM6IGRyYWZ0XG5kYXRlOiAyMDE4LTAyLTE1IDExOj
-AwOjAwXG4iLCJoaXN0b3J5IjpbNzk2MDgxNzJdfQ==
+AwOjAwXG4iLCJoaXN0b3J5IjpbMTQyNzE1NTcwMF19
 -->
