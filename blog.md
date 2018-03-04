@@ -274,7 +274,7 @@ for w, i in word_index.items():
 
 Finally, we can use the [`tf.train.Scaffold`](https://www.tensorflow.org/api_docs/python/tf/train/Scaffold) property in the `EstimatorSpec` returned by our `model_fn` to instruct TensorFlow to initialize our embedding variable using this matrix the first time, after which the model will be loaded from a saved checkpoint.
 
-```python 
+```python custom_initializer.py
 def init_fn(scaffold, sess):
       sess.run(embeddings.initializer, {embeddings.initial_value: embedding_matrix})
 scaffold = tf.train.Scaffold(init_fn=init_fn)
@@ -296,7 +296,7 @@ We can visualize the loss values of each model during training and testing, as w
 
 To obtain predictions on new sentences we can use the `predict` method in the `Estimator` instances, which will load the latest checkpoint for each model and evaluate on the unseen examples. But before passing the data into the model we have to clean up, tokenize and map each token to the corresponding index as we see below.
 
-```python
+```python predict.py
 def text_to_index(sentence):
     # Remove punctuation characters except for the apostrophe
     translator = str.maketrans('', '', string.punctuation.replace("'", ''))
@@ -339,5 +339,5 @@ RpYW4gUnVkZXJcbnRhZ3M6IFRlbnNvckZsb3csIEVzdGltYXRv
 ciwgTkxQXG5jYXRlZ29yaWVzOiBUZW5zb3JGbG93LCBFc3RpbW
 F0b3IsIE5MUFxuI2V4Y2VycHQ6XG4jZmVhdHVyZWRJbWFnZTpc
 biNzdGF0dXM6IGRyYWZ0XG5kYXRlOiAyMDE4LTAyLTE1IDExOj
-AwOjAwXG4iLCJoaXN0b3J5IjpbLTY2NDMwMjU1M119
+AwOjAwXG4iLCJoaXN0b3J5IjpbLTUyMjkxODI1Nl19
 -->
