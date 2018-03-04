@@ -278,11 +278,11 @@ Finally, we can use a custom initializer function and pass it in the `params` ob
 def my_initializer(shape=None, dtype=tf.float32, partition_info=None):
     assert dtype is tf.float32
     return embedding_matrix
-
 params = {'embedding_initializer': my_initializer}
-cnn_pretrained_classifier = tf.estimator.Estimator(model_fn=cnn_model_fn,
-                                        model_dir=os.path.join(model_dir, 'cnn_pretrained'),
-                                        params=params)
+cnn_pretrained_classifier = tf.estimator.Estimator(
+    model_fn=cnn_model_fn,
+    model_dir=os.path.join(model_dir, 'cnn_pretrained'),
+    params=params)
 train_and_evaluate(cnn_pretrained_classifier)
 ```
 
@@ -345,5 +345,5 @@ RpYW4gUnVkZXJcbnRhZ3M6IFRlbnNvckZsb3csIEVzdGltYXRv
 ciwgTkxQXG5jYXRlZ29yaWVzOiBUZW5zb3JGbG93LCBFc3RpbW
 F0b3IsIE5MUFxuI2V4Y2VycHQ6XG4jZmVhdHVyZWRJbWFnZTpc
 biNzdGF0dXM6IGRyYWZ0XG5kYXRlOiAyMDE4LTAyLTE1IDExOj
-AwOjAwXG4iLCJoaXN0b3J5IjpbLTUwNTk5NTIxOV19
+AwOjAwXG4iLCJoaXN0b3J5IjpbNTU4ODA3MDQ5XX0=
 -->
