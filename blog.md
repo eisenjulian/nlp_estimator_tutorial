@@ -179,7 +179,9 @@ input_layer = tf.contrib.layers.embed_sequence(
 Then we use `tf.layers` to process each output sequentially.
 ```python
 training = (mode == tf.estimator.ModeKeys.TRAIN)
-dropout_emb = tf.layers.dropout(inputs=input_layer, rate=0.2, training=training)
+dropout_emb = tf.layers.dropout(inputs=input_layer, 
+                                rate=0.2, 
+                                training=training)
 conv = tf.layers.conv1d(
     inputs=dropout_emb,
     filters=32,
@@ -335,5 +337,5 @@ RpYW4gUnVkZXJcbnRhZ3M6IFRlbnNvckZsb3csIEVzdGltYXRv
 ciwgTkxQXG5jYXRlZ29yaWVzOiBUZW5zb3JGbG93LCBFc3RpbW
 F0b3IsIE5MUFxuI2V4Y2VycHQ6XG4jZmVhdHVyZWRJbWFnZTpc
 biNzdGF0dXM6IGRyYWZ0XG5kYXRlOiAyMDE4LTAyLTE1IDExOj
-AwOjAwXG4iLCJoaXN0b3J5IjpbLTg0MjY3NDAwNF19
+AwOjAwXG4iLCJoaXN0b3J5IjpbMTE5ODMzODU3Nl19
 -->
