@@ -100,7 +100,7 @@ train_and_evaluate(classifier)
 
 One of the benefits of choosing a simple model is that it is much more interpretable. The more complex a model, the harder it is to inspect and the more it tends to work like a black box. In this example, we can load the weights from our model's last checkpoint and take a look at what tokens correspond to the  biggest weights in absolute value. The results look like what we would expect.
 
-```python 
+```python plot_weights.py
 # Load the tensor with the model weights
 weights = classifier.get_variable_value('linear/linear_model/x/weights').flatten()
 # Find biggest weights in absolute value
@@ -339,5 +339,5 @@ RpYW4gUnVkZXJcbnRhZ3M6IFRlbnNvckZsb3csIEVzdGltYXRv
 ciwgTkxQXG5jYXRlZ29yaWVzOiBUZW5zb3JGbG93LCBFc3RpbW
 F0b3IsIE5MUFxuI2V4Y2VycHQ6XG4jZmVhdHVyZWRJbWFnZTpc
 biNzdGF0dXM6IGRyYWZ0XG5kYXRlOiAyMDE4LTAyLTE1IDExOj
-AwOjAwXG4iLCJoaXN0b3J5IjpbLTEwNDg0NzYzNV19
+AwOjAwXG4iLCJoaXN0b3J5IjpbNjY2MDY2MTczXX0=
 -->
