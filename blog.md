@@ -245,17 +245,6 @@ lstm_cell = tf.nn.rnn_cell.BasicLSTMCell(100)
 _, final_states = tf.nn.dynamic_rnn(
         lstm_cell, inputs, sequence_length=features['len'], dtype=tf.float32)
 logits = tf.layers.dense(inputs=final_states.h, units=1)
-
-
-    
-    # create the complete LSTM
-    _, final_states = tf.nn.dynamic_rnn(
-        lstm_cell, inputs, sequence_length=features['len'], dtype=tf.float32)
-
-    # get the final hidden states of dimensionality [batch_size x sentence_size]
-    outputs = final_states.h
-
-    logits = tf.layers.dense(inputs=outputs, units=1)
 ```
 
 ### Pre-trained vectors
@@ -286,9 +275,15 @@ for w, i in word_index.items():
 Finally, we can use the [`tf.train.Scaffold`](https://www.tensorflow.org/api_docs/python/tf/train/Scaffold) property in the `EstimatorSpec` returned by our `model_fn` to instruct TensorFlow to initialize our embedding variable using this matrix the first time, after which the model will be loaded from a saved checkpoint.
 
 ```python custom_initializer.py
-def init_fn(scaffold, sess):
-      sess.run(embeddings.initializer, {embeddings.initial_value: embedding_matrix})
-scaffold = tf.train.Scaffold(init_fn=init_fn)
+def my_initializer(shape=None, dtype=tf.float32, partition_info=None):
+    assert dtype is tf.float32
+    return embedding_matrix
+
+params = {'embedding_initializer': my_initializer}
+cnn_pretrained_classifier = tf.estimator.Estimator(model_fn=cnn_model_fn,
+                                        model_dir=os.path.join(model_dir, 'cnn_pretrained'),
+                                        params=params)
+train_and_evaluate(cnn_pretrained_classifier)
 ```
 
 ### Running TensorBoard
@@ -350,5 +345,5 @@ RpYW4gUnVkZXJcbnRhZ3M6IFRlbnNvckZsb3csIEVzdGltYXRv
 ciwgTkxQXG5jYXRlZ29yaWVzOiBUZW5zb3JGbG93LCBFc3RpbW
 F0b3IsIE5MUFxuI2V4Y2VycHQ6XG4jZmVhdHVyZWRJbWFnZTpc
 biNzdGF0dXM6IGRyYWZ0XG5kYXRlOiAyMDE4LTAyLTE1IDExOj
-AwOjAwXG4iLCJoaXN0b3J5IjpbODIxODU5MjE3XX0=
+AwOjAwXG4iLCJoaXN0b3J5IjpbLTE4MTcxMzg2NDJdfQ==
 -->
