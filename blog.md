@@ -241,10 +241,21 @@ graph LR
 In the beginning, we padded all documents up to $200$ tokens, which is necessary to build a proper tensor. However, when a document contains fewer than $200$ words, we don't want the LSTM to continue processing the padding token as it does not add information and degrades performance. For this reason, we additionally want to provide our network with the length of the original sequence before it was padded. It then copies the last state through to the sequence's end. We can do this by using the `"len"` feature in our input functions. We can now use the same logic as above and simply replace the convolutional, pooling, and flatten layers with our LSTM cell.
 
 ```python lstm_classifier.py
-lstm_cell = tf.contrib.rnn.BasicLSTMCell(100)
+lstm_cell = tf.nn.rnn_cell.BasicLSTMCell(100)
 _, final_states = tf.nn.dynamic_rnn(
         lstm_cell, inputs, sequence_length=features['len'], dtype=tf.float32)
 logits = tf.layers.dense(inputs=final_states.h, units=1)
+
+
+    
+    # create the complete LSTM
+    _, final_states = tf.nn.dynamic_rnn(
+        lstm_cell, inputs, sequence_length=features['len'], dtype=tf.float32)
+
+    # get the final hidden states of dimensionality [batch_size x sentence_size]
+    outputs = final_states.h
+
+    logits = tf.layers.dense(inputs=outputs, units=1)
 ```
 
 ### Pre-trained vectors
@@ -339,5 +350,5 @@ RpYW4gUnVkZXJcbnRhZ3M6IFRlbnNvckZsb3csIEVzdGltYXRv
 ciwgTkxQXG5jYXRlZ29yaWVzOiBUZW5zb3JGbG93LCBFc3RpbW
 F0b3IsIE5MUFxuI2V4Y2VycHQ6XG4jZmVhdHVyZWRJbWFnZTpc
 biNzdGF0dXM6IGRyYWZ0XG5kYXRlOiAyMDE4LTAyLTE1IDExOj
-AwOjAwXG4iLCJoaXN0b3J5IjpbLTUyMjkxODI1Nl19
+AwOjAwXG4iLCJoaXN0b3J5IjpbODIxODU5MjE3XX0=
 -->
