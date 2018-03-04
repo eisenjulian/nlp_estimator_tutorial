@@ -264,7 +264,7 @@ with open('glove.6B.50d.txt', 'r', encoding='utf-8') as f:
 
 After loading the vectors into memory from a file we create numpy array using the same indexes as our vocabulary. The created numpy array is of shape `(5000, 50)`. At every row index, it contains the `50`-dimensional vector representing the word at the same index in our vocabulary.
 
-```python
+```python create_glove_matrix.py
 embedding_matrix = np.random.uniform(-1, 1, size=(vocab_size, embedding_size))
 for w, i in word_index.items():
     v = embeddings.get(w)
@@ -274,7 +274,7 @@ for w, i in word_index.items():
 
 Finally, we can use the [`tf.train.Scaffold`](https://www.tensorflow.org/api_docs/python/tf/train/Scaffold) property in the `EstimatorSpec` returned by our `model_fn` to instruct TensorFlow to initialize our embedding variable using this matrix the first time, after which the model will be loaded from a saved checkpoint.
 
-```python
+```python 
 def init_fn(scaffold, sess):
       sess.run(embeddings.initializer, {embeddings.initial_value: embedding_matrix})
 scaffold = tf.train.Scaffold(init_fn=init_fn)
@@ -339,5 +339,5 @@ RpYW4gUnVkZXJcbnRhZ3M6IFRlbnNvckZsb3csIEVzdGltYXRv
 ciwgTkxQXG5jYXRlZ29yaWVzOiBUZW5zb3JGbG93LCBFc3RpbW
 F0b3IsIE5MUFxuI2V4Y2VycHQ6XG4jZmVhdHVyZWRJbWFnZTpc
 biNzdGF0dXM6IGRyYWZ0XG5kYXRlOiAyMDE4LTAyLTE1IDExOj
-AwOjAwXG4iLCJoaXN0b3J5IjpbLTEyNTkzODI3NjBdfQ==
+AwOjAwXG4iLCJoaXN0b3J5IjpbLTY2NDMwMjU1M119
 -->
