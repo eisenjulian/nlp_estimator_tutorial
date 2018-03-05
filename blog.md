@@ -49,7 +49,7 @@ def parser(x, length, y):
 
 def train_input_fn():
     dataset = tf.data.Dataset.from_tensor_slices((x_train, x_len_train, y_train))
-    dataset = dataset.shuffle(buffer_size=25000)
+    dataset = dataset.shuffle(buffer_size=len(x_train_variable))
     dataset = dataset.batch(100)
     dataset = dataset.map(parser)
     dataset = dataset.repeat()
@@ -345,5 +345,5 @@ RpYW4gUnVkZXJcbnRhZ3M6IFRlbnNvckZsb3csIEVzdGltYXRv
 ciwgTkxQXG5jYXRlZ29yaWVzOiBUZW5zb3JGbG93LCBFc3RpbW
 F0b3IsIE5MUFxuI2V4Y2VycHQ6XG4jZmVhdHVyZWRJbWFnZTpc
 biNzdGF0dXM6IGRyYWZ0XG5kYXRlOiAyMDE4LTAyLTE1IDExOj
-AwOjAwXG4iLCJoaXN0b3J5IjpbMTQyNzE1NTcwMF19
+AwOjAwXG4iLCJoaXN0b3J5IjpbLTIxMzIzNDA0NzVdfQ==
 -->
