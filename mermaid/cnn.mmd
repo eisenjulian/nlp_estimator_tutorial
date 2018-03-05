@@ -1,0 +1,7 @@
+graph LR
+    id1(Embedding Layer) --> id2(Dropout) 
+    id2 --> id3(Convolution1D)
+    id3 --> id4(GlobalMaxPooling1D)
+    id4 --> id5(Hidden Dense Layer)
+    id5 --> id6(Dropout)
+    id6 --> id7(Output Layer)
