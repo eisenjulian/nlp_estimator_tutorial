@@ -292,7 +292,7 @@ Now we can launch TensorBoard and see how the different models we've trained com
 
 In a terminal, we run
 ```bash
-> tensorboard --logdir=/tmp/exp
+> tensorboard --logdir={model_dir}
 ```
 We can visualize the loss values of each model during training and testing, as well as their accuracy scores and the precision-recall curves.
 
@@ -345,5 +345,5 @@ RpYW4gUnVkZXJcbnRhZ3M6IFRlbnNvckZsb3csIEVzdGltYXRv
 ciwgTkxQXG5jYXRlZ29yaWVzOiBUZW5zb3JGbG93LCBFc3RpbW
 F0b3IsIE5MUFxuI2V4Y2VycHQ6XG4jZmVhdHVyZWRJbWFnZTpc
 biNzdGF0dXM6IGRyYWZ0XG5kYXRlOiAyMDE4LTAyLTE1IDExOj
-AwOjAwXG4iLCJoaXN0b3J5IjpbLTIxMzIzNDA0NzVdfQ==
+AwOjAwXG4iLCJoaXN0b3J5IjpbMzAyMTgzMzE4XX0=
 -->
