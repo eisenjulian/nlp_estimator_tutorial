@@ -313,7 +313,10 @@ def text_to_index(sentence):
 
 def print_predictions(sentences, classifier):
     indexes = [text_to_index(sentence) for sentence in sentences]
-    x = sequence.pad_sequences(indexes, maxlen=sentence_size)
+    x = sequence.pad_sequences(indexes,
+                               maxlen=sentence_size, 
+                               padding='post', 
+                               value=-1)
     length = np.array([min(len(x), sentence_size) for x in indexes])
     predict_input_fn = tf.estimator.inputs.numpy_input_fn(x={"x": x, "len": length}, shuffle=False)
     predictions = [p['logistic'][0] for p in classifier.predict(input_fn=predict_input_fn)]
@@ -347,5 +350,5 @@ RpYW4gUnVkZXJcbnRhZ3M6IFRlbnNvckZsb3csIEVzdGltYXRv
 ciwgTkxQXG5jYXRlZ29yaWVzOiBUZW5zb3JGbG93LCBFc3RpbW
 F0b3IsIE5MUFxuI2V4Y2VycHQ6XG4jZmVhdHVyZWRJbWFnZTpc
 biNzdGF0dXM6IGRyYWZ0XG5kYXRlOiAyMDE4LTAyLTE1IDExOj
-AwOjAwXG4iLCJoaXN0b3J5IjpbLTE0NzA5NzYxMDddfQ==
+AwOjAwXG4iLCJoaXN0b3J5IjpbLTEyNzMzMDI2ODVdfQ==
 -->
