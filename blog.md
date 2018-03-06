@@ -168,7 +168,7 @@ graph LR
 
 As seen in previous blog posts, the `tf.estimator` framework provides a high-level API for training machine learning models, defining `train()`, `evaluate()` and `predict()` operations, handling checkpointing, loading, initializing, serving, building the graph and the session out of the box. There is a small family of pre-made estimators, like the ones we used earlier, but it's most likely that you will need to [build your own](https://www.tensorflow.org/extend/estimators).
 
-Writing a custom estimator means writing a `model_fn(features, labels, mode, params)` that returns and `EstimatorSpec`. The first step will be mapping the features into our embedding layer:
+Writing a custom estimator means writing a `model_fn(features, labels, mode, params)` that returns an `EstimatorSpec`. The first step will be mapping the features into our embedding layer:
 
 ```python embeddings.py
 input_layer = tf.contrib.layers.embed_sequence(
@@ -350,5 +350,5 @@ RpYW4gUnVkZXJcbnRhZ3M6IFRlbnNvckZsb3csIEVzdGltYXRv
 ciwgTkxQXG5jYXRlZ29yaWVzOiBUZW5zb3JGbG93LCBFc3RpbW
 F0b3IsIE5MUFxuI2V4Y2VycHQ6XG4jZmVhdHVyZWRJbWFnZTpc
 biNzdGF0dXM6IGRyYWZ0XG5kYXRlOiAyMDE4LTAyLTE1IDExOj
-AwOjAwXG4iLCJoaXN0b3J5IjpbLTYzMjQzMDc1NV19
+AwOjAwXG4iLCJoaXN0b3J5IjpbLTQ2NTAwNjE4N119
 -->
