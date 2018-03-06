@@ -294,7 +294,7 @@ In a terminal, we run
 ```bash
 > tensorboard --logdir={model_dir}
 ```
-We can visualize the loss values of each model during training and testing, as well as their accuracy scores and the precision-recall curves.
+We can visualize many metrics collected while training and testing, including the loss values of each model during training and testing, and the precision-recall curves.
 
 ![PR curve](https://raw.githubusercontent.com/eisenjulian/nlp_estimator_tutorial/master/pr_curves.png)
 
@@ -345,5 +345,5 @@ RpYW4gUnVkZXJcbnRhZ3M6IFRlbnNvckZsb3csIEVzdGltYXRv
 ciwgTkxQXG5jYXRlZ29yaWVzOiBUZW5zb3JGbG93LCBFc3RpbW
 F0b3IsIE5MUFxuI2V4Y2VycHQ6XG4jZmVhdHVyZWRJbWFnZTpc
 biNzdGF0dXM6IGRyYWZ0XG5kYXRlOiAyMDE4LTAyLTE1IDExOj
-AwOjAwXG4iLCJoaXN0b3J5IjpbLTYzMDg3MzUxN119
+AwOjAwXG4iLCJoaXN0b3J5IjpbMTE5ODQ1ODk4MV19
 -->
