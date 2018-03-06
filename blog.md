@@ -172,8 +172,10 @@ Writing a custom estimator means writing a `model_fn(features, labels, mode, par
 
 ```python embeddings.py
 input_layer = tf.contrib.layers.embed_sequence(
-        features['x'], vocab_size, embedding_size,
-        initializer=params['embedding_initializer'])
+    features['x'], 
+    vocab_size, 
+    embedding_size,
+    initializer=params['embedding_initializer'])
 ```
 Then we use `tf.layers` to process each output sequentially.
 ```python cnn_classifer.py
@@ -350,5 +352,5 @@ RpYW4gUnVkZXJcbnRhZ3M6IFRlbnNvckZsb3csIEVzdGltYXRv
 ciwgTkxQXG5jYXRlZ29yaWVzOiBUZW5zb3JGbG93LCBFc3RpbW
 F0b3IsIE5MUFxuI2V4Y2VycHQ6XG4jZmVhdHVyZWRJbWFnZTpc
 biNzdGF0dXM6IGRyYWZ0XG5kYXRlOiAyMDE4LTAyLTE1IDExOj
-AwOjAwXG4iLCJoaXN0b3J5IjpbLTQ2NTAwNjE4N119
+AwOjAwXG4iLCJoaXN0b3J5IjpbLTEyNjczNTIwNzFdfQ==
 -->
