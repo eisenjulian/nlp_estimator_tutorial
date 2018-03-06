@@ -7,7 +7,7 @@ Welcome to Part 4 of a blog series that introduces TensorFlow Datasets and Estim
 
 Here in Part 4, we will build on top of all the above to tackle a different family of problems in Natural Language Processing (NLP). In particular, this article demonstrates how to solve a text classification task using custom TensorFlow estimators, embeddings, and the [tf.layers](https://www.tensorflow.org/api_docs/python/tf/layers) module. Along the way, we'll learn about word2vec and transfer learning as a technique to bootstrap model performance when labeled data is a scarce resource.
 
-We will show you relevant code snippets. [Here](https://github.com)'s a complete Jupyter Notebook  that you can run locally or on [Google Colaboratory](https://colab.research.google.com). The plain `.py`  source file is also available [here](https://github.com). Note that the code was written to demonstrate how Estimators work functionally and was not optimized for maximum performance.
+We will show you relevant code snippets. [Here](https://github.com)'s the complete Jupyter Notebook  that you can run locally or on [Google Colaboratory](https://colab.research.google.com). The plain `.py`  source file is also available [here](https://github.com). Note that the code was written to demonstrate how Estimators work functionally and was not optimized for maximum performance.
 
 ### The task
 
@@ -354,5 +354,5 @@ RpYW4gUnVkZXJcbnRhZ3M6IFRlbnNvckZsb3csIEVzdGltYXRv
 ciwgTkxQXG5jYXRlZ29yaWVzOiBUZW5zb3JGbG93LCBFc3RpbW
 F0b3IsIE5MUFxuI2V4Y2VycHQ6XG4jZmVhdHVyZWRJbWFnZTpc
 biNzdGF0dXM6IGRyYWZ0XG5kYXRlOiAyMDE4LTAyLTE1IDExOj
-AwOjAwXG4iLCJoaXN0b3J5IjpbMTM0NTMzMTg5N119
+AwOjAwXG4iLCJoaXN0b3J5IjpbLTM1MjAzMTUxMV19
 -->
