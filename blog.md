@@ -3,9 +3,22 @@ Classifying text with TensorFlow Estimators
 ===
 *Posted by Sebastian Ruder and Julian Eisenschlos, Google Developer Experts*
 
-Welcome to Part 4 of a blog series that introduces TensorFlow Datasets and Estimators. You don't need to read all of the previous material, but take a look if want to refresh any of the following concepts. [Part 1](https://developers.googleblog.com/2017/09/introducing-tensorflow-datasets.html) focused on pre-made Estimators, [Part 2](https://developers.googleblog.com/2017/11/introducing-tensorflow-feature-columns.html) discussed feature columns, and [Part 3](https://developers.googleblog.com/2017/12/creating-custom-estimators-in-tensorflow.html) how to create custom Estimators.  Here in Part 4, we will build on top of all the above to tackle a different family of problems in Natural Language Processing (NLP). In particular, this article demonstrates how to solve a text classification task using custom TensorFlow estimators, embeddings, and the [tf.layers](https://www.tensorflow.org/api_docs/python/tf/layers) module. Along the way, we'll learn about word2vec and transfer learning as a technique to bootstrap model performance when labeled data is a scarce resource.
+Hello there! Throughout this post we will show you how to classify text using Estimators in TensorFlow. Here’s the outline of what we’ll cover:
 
-We will show you relevant code snippets. [Here](https://github.com)'s a complete Jupyter Notebook  that you can run locally or on [Google Colaboratory](https://colab.research.google.com). The plain `.py`  source file is also available [here](https://github.com). Note that the code was written to demonstrate how Estimators work functionally and was not optimized for maximum performance.
+-   Loading data using Datasets.
+-   Building baselines using pre-canned estimators.
+-   Using word embeddings.
+-   Building custom estimators with convolution and LSTM layers.
+-   Loading pre-trained word vectors.
+-   Evaluating and comparing models using TensorBoard.
+
+----------
+
+Welcome to Part 4 of a blog series that introduces TensorFlow Datasets and Estimators. You don't need to read all of the previous material, but take a look if you want to refresh any of the following concepts. [Part 1](https://developers.googleblog.com/2017/09/introducing-tensorflow-datasets.html) focused on pre-made Estimators, [Part 2](https://developers.googleblog.com/2017/11/introducing-tensorflow-feature-columns.html) discussed feature columns, and [Part 3](https://developers.googleblog.com/2017/12/creating-custom-estimators-in-tensorflow.html) how to create custom Estimators.  
+
+Here in Part 4, we will build on top of all the above to tackle a different family of problems in Natural Language Processing (NLP). In particular, this article demonstrates how to solve a text classification task using custom TensorFlow estimators, embeddings, and the [tf.layers](https://www.tensorflow.org/api_docs/python/tf/layers) module. Along the way, we'll learn about word2vec and transfer learning as a technique to bootstrap model performance when labeled data is a scarce resource.
+
+We will show you relevant code snippets. [Here](https://github.com)'s the complete Jupyter Notebook  that you can run locally or on [Google Colaboratory](https://colab.research.google.com). The plain `.py`  source file is also available [here](https://github.com). Note that the code was written to demonstrate how Estimators work functionally and was not optimized for maximum performance.
 
 ### The task
 
@@ -17,7 +30,7 @@ For illustration, here's a piece of a negative review (with $2$ stars) in the da
 
 *Keras* provides a convenient handler for importing the dataset which is also available as a serialized numpy array `.npz` file to download [here]( https://s3.amazonaws.com/text-datasets/imdb.npz). For text classification, it is standard to limit the size of the vocabulary to prevent the dataset from becoming too sparse and high dimensional, causing potential overfitting. For this reason, each review consists of a series of word indexes that go from $4$ (the most frequent word in the dataset **the**) to $4999$, which corresponds to **orange**. Index $1$ represents the beginning of the sentence and the index $2$ is assigned to all unknown (also known as *out-of-vocabulary* or *OOV*) tokens. These indexes have been obtained by pre-processing the text data in a pipeline that cleans, normalizes and tokenizes each sentence first and then builds a dictionary indexing each of the tokens by frequency.
 
-After we've loaded the data in memory we pad each of the sentences with zeroes to a fixed size (here: $200$) so that we have two $2$-dimensional $25000\times200$ arrays for training and testing respectively.
+After we've loaded the data in memory we pad each of the sentences with $-1$ to a fixed size (here: $200$) so that we have two $2$-dimensional $25000\times200$ arrays for training and testing respectively.
 
 ```python load_data.py
 vocab_size = 5000
@@ -49,7 +62,7 @@ def parser(x, length, y):
 
 def train_input_fn():
     dataset = tf.data.Dataset.from_tensor_slices((x_train, x_len_train, y_train))
-    dataset = dataset.shuffle(buffer_size=25000)
+    dataset = dataset.shuffle(buffer_size=len(x_train_variable))
     dataset = dataset.batch(100)
     dataset = dataset.map(parser)
     dataset = dataset.repeat()
@@ -119,7 +132,7 @@ plt.show()
 
 ![Model weights](https://raw.githubusercontent.com/eisenjulian/nlp_estimator_tutorial/master/token_weights.png)
 
-As we can see, tokens with the most positive weight such as 'refreshing' are clearly associated with positive sentiment, while tokens that have a large negative weight unarguably evoke negative emotions. A simple but powerful optimization that one can do on this model is weighting the tokens by their [tf-idf](https://en.wikipedia.org/wiki/Tf%E2%80%93idf) scores.
+As we can see, tokens with the most positive weight such as 'refreshing' are clearly associated with positive sentiment, while tokens that have a large negative weight unarguably evoke negative emotions. A simple but powerful modification that one can do to improve this model is weighting the tokens by their [tf-idf](https://en.wikipedia.org/wiki/Tf%E2%80%93idf) scores.
 
 ### Embeddings
 
@@ -138,7 +151,7 @@ classifier = tf.estimator.DNNClassifier(
 train_and_evaluate(classifier)
 ```
 
-We can use TensorBoard to visualize a our $50$-dimensional word vectors projected into $\mathbb{R}^3$ using [t-SNE](https://en.wikipedia.org/wiki/T-distributed_stochastic_neighbor_embedding). We expect similar words to be close to each other. This can be a useful way to inspect our model weights and find unexpected behaviours.
+We can use TensorBoard to visualize our $50$-dimensional word vectors projected into $\mathbb{R}^3$ using [t-SNE](https://en.wikipedia.org/wiki/T-distributed_stochastic_neighbor_embedding). We expect similar words to be close to each other. This can be a useful way to inspect our model weights and find unexpected behaviours.
 
 ![embeddings](https://raw.githubusercontent.com/eisenjulian/nlp_estimator_tutorial/master/embeddings.gif)
 
@@ -150,7 +163,11 @@ Convolutions are one way to take advantage of this structure, similar to how we 
 
 The following image shows how a filter matrix $F \in \mathbb{R}^{d\times m}$ slides across each $3$-gram window of tokens to build a new feature map. Afterwards a *pooling* layer is usually applied to combine adjacent results.
 
-![text convolution](https://raw.githubusercontent.com/eisenjulian/nlp_estimator_tutorial/master/conv.png)
+![text convolution](https://raw.githubusercontent.com/eisenjulian/nlp_estimator_tutorial/master/conv.png) 
+<small><p align="center">
+Source: <a href="https://www.semanticscholar.org/paper/Learning-to-Rank-Short-Text-Pairs-with-Convolution-Severyn-Moschitti/452f7411af7d471dd3ba84c2b06b2aaffc38cdb9">Learning to Rank Short Text Pairs with Convolutional Deep Neural Networks</a> by <strong>Severyn</strong> et al. [2015]
+</p></small>
+
 
 Let us look at the full model architecture. The use of dropout layers is a regularization technique that makes the model less likely to overfit.
 
@@ -168,12 +185,14 @@ graph LR
 
 As seen in previous blog posts, the `tf.estimator` framework provides a high-level API for training machine learning models, defining `train()`, `evaluate()` and `predict()` operations, handling checkpointing, loading, initializing, serving, building the graph and the session out of the box. There is a small family of pre-made estimators, like the ones we used earlier, but it's most likely that you will need to [build your own](https://www.tensorflow.org/extend/estimators).
 
-Writing a custom estimator means writing a `model_fn(features, labels, mode, params)` that returns and `EstimatorSpec`. The first step will be mapping the features into our embedding layer:
+Writing a custom estimator means writing a `model_fn(features, labels, mode, params)` that returns an `EstimatorSpec`. The first step will be mapping the features into our embedding layer:
 
 ```python embeddings.py
 input_layer = tf.contrib.layers.embed_sequence(
-        features['x'], vocab_size, embedding_size,
-        initializer=params['embedding_initializer'])
+    features['x'], 
+    vocab_size, 
+    embedding_size,
+    initializer=params['embedding_initializer'])
 ```
 Then we use `tf.layers` to process each output sequentially.
 ```python cnn_classifer.py
@@ -193,10 +212,10 @@ dropout = tf.layers.dropout(inputs=hidden, rate=0.2, training=training)
 logits = tf.layers.dense(inputs=dropout_hidden, units=1)
 ```
 
-Finally, we will use a `Head` to simplify the writing of our last part of the `model_fn`. The head already knows how to compute predictions, loss, train_op, metrics and export outputs, and can be reused across models. This is also used in the pre-made estimators and provides us with the benefit of a uniform evaluation function across all of our models. We will use `_binary_logistic_head_with_sigmoid_cross_entropy_loss`, which is a head for single label binary classification that uses `sigmoid_cross_entropy_with_logits` as the loss function under the hood.
+Finally, we will use a `Head` to simplify the writing of our last part of the `model_fn`. The head already knows how to compute predictions, loss, train_op, metrics and export outputs, and can be reused across models. This is also used in the pre-made estimators and provides us with the benefit of a uniform evaluation function across all of our models. We will use `binary_classification_head`, which is a head for single label binary classification that uses `sigmoid_cross_entropy_with_logits` as the loss function under the hood.
 
 ```python model_head.py
-head = head_lib._binary_logistic_head_with_sigmoid_cross_entropy_loss()
+head = tf.contrib.estimator.binary_classification_head()
 optimizer = tf.train.AdamOptimizer()    
 def _train_op_fn(loss):
     tf.summary.scalar('loss', loss)
@@ -225,20 +244,24 @@ train_and_evaluate(cnn_classifier)
 
 Using the `Estimator` API and the same model `head`, we can also create a classifier that uses a *Long Short-Term Memory* (*LSTM*) cell instead of convolutions. Recurrent models such as this are some of the most successful building blocks for NLP applications. An LSTM processes the entire document sequentially, recursing over the sequence with its cell while storing the current state of the sequence in its memory.
 
-One of the benefits of CNNs over recurrent models is the simple architecture usually provides faster training time and better convergence without much parameter massaging. LSTMs (and RNNs in general) can suffer convergence issues like vanishing or exploding gradients, that said, with enough tweaking they can get state-of-the-art results in many problems. As a rule of thumb CNNs are good at feature extraction, while RNNs excel at tasks that depend on the meaning of the whole sentence and the length of the sequence matters, like question answering or machine translation.
+One of the drawbacks of recurrent models compared to CNNs is that, because of the nature of recursion, models turn out deeper and more complex, which usually produces slower training time and worse convergence. LSTMs (and RNNs in general) can suffer convergence issues like vanishing or exploding gradients, that said, with sufficient tuning they can obtain state-of-the-art results for many problems. As a rule of thumb CNNs are good at feature extraction, while RNNs excel at tasks that depend on the meaning of the whole sentence, like question answering or machine translation.
 
-Each cell processes one token embedding at a time updating its internal state based on a differentiable computation that depends on both that vector $x_t$ and its previous state $h_{t-1}$. There's a great explanation about the logic behind that at [this post](http://colah.github.io/posts/2015-08-Understanding-LSTMs/) on [Christopher Olah](https://github.com/colah)'s blog. Actually, everything there is a must read!
+Each cell processes one token embedding at a time updating its internal state based on a differentiable computation that depends on both the embedding vector $x_t$ and the previous state $h_{t-1}$. In order to get a better understanding of how LSTMs work, you can refer to Chris Olah’s [blog post](https://colah.github.io/posts/2015-08-Understanding-LSTMs/).
 
 ![LSTM Architecture](https://colah.github.io/posts/2015-08-Understanding-LSTMs/img/LSTM3-chain.png)
+<small><p align="center">
+Source: <a href="https://colah.github.io/posts/2015-08-Understanding-LSTMs/">Understanding LSTM Networks</a> by <strong>Chris Olah</strong>
+</p></small>
 
-The overall model will end up looking like this:
+
+The complete LSTM model can be expressed by the following simple flowchart:
 ```mermaid
 graph LR
     id1(Embedding Layer) --> id2(LSTM Cell) 
     id2 -->|Recursion| id2
     id2 --> id3(Output Layer)
 ```
-In the beginning, we padded all documents up to $200$ tokens, which is necessary to build a proper tensor. However, when a document contains fewer than $200$ words, we don't want the LSTM to continue processing the padding token as it does not add information and degrades performance. For this reason, we additionally want to provide our network with the length of the original sequence before it was padded. It then copies the last state through to the sequence's end. We can do this by using the `"len"` feature in our input functions. We can now use the same logic as above and simply replace the convolutional, pooling, and flatten layers with our LSTM cell.
+In the beginning of this post, we padded all documents up to $200$ tokens, which is necessary to build a proper tensor. However, when a document contains fewer than $200$ words, we don't want the LSTM to continue processing padding tokens as it does not add information and degrades performance. For this reason, we additionally want to provide our network with the length of the original sequence before it was padded. Internally, the model then copies the last state through to the sequence's end. We can do this by using the `"len"` feature in our input functions. We can now use the same logic as above and simply replace the convolutional, pooling, and flatten layers with our LSTM cell.
 
 ```python lstm_classifier.py
 lstm_cell = tf.nn.rnn_cell.BasicLSTMCell(100)
@@ -249,7 +272,7 @@ logits = tf.layers.dense(inputs=final_states.h, units=1)
 
 ### Pre-trained vectors
 
-Most of the models that we have shown before, rely on word embeddings as a first layer to increase performance. So far, we have initialized them randomly. However, [much](https://arxiv.org/abs/1607.01759) [previous](https://arxiv.org/abs/1301.3781) [work](https://arxiv.org/abs/1103.0398) has shown that using embeddings pre-trained on a large unlabeled corpus as initialization is beneficial, particularly when training on only a small number of labeled examples. The most popular pre-trained embedding is [word2vec](https://www.tensorflow.org/tutorials/word2vec). Leveraging knowledge from unlabeled data via pre-trained embeddings is an instance of *[transfer learning](http://ruder.io/transfer-learning/)*.
+Most of the models that we have shown before rely on word embeddings as a first layer. So far, we have initialized this embedding layer randomly. However, [much](https://arxiv.org/abs/1607.01759) [previous](https://arxiv.org/abs/1301.3781) [work](https://arxiv.org/abs/1103.0398) has shown that using embeddings pre-trained on a large unlabeled corpus as initialization is beneficial, particularly when training on only a small number of labeled examples. The most popular pre-trained embedding is [word2vec](https://www.tensorflow.org/tutorials/word2vec). Leveraging knowledge from unlabeled data via pre-trained embeddings is an instance of *[transfer learning](http://ruder.io/transfer-learning/)*.
 
 To this end, we will show you how to use them in an `Estimator`. We will use the pre-trained vectors from another popular model, [GloVe](https://nlp.stanford.edu/projects/glove/).
 ```python load_glove.py
@@ -262,7 +285,7 @@ with open('glove.6B.50d.txt', 'r', encoding='utf-8') as f:
         embeddings[w] = vectors
 ```
 
-After loading the vectors into memory from a file we create numpy array using the same indexes as our vocabulary. The created numpy array is of shape `(5000, 50)`. At every row index, it contains the `50`-dimensional vector representing the word at the same index in our vocabulary.
+After loading the vectors into memory from a file we store them as a `numpy.array` using the same indexes as our vocabulary. The created array is of shape `(5000, 50)`. At every row index, it contains the `50`-dimensional vector representing the word at the same index in our vocabulary.
 
 ```python create_glove_matrix.py
 embedding_matrix = np.random.uniform(-1, 1, size=(vocab_size, embedding_size))
@@ -292,11 +315,13 @@ Now we can launch TensorBoard and see how the different models we've trained com
 
 In a terminal, we run
 ```bash
-> tensorboard --logdir=/tmp/exp
+> tensorboard --logdir={model_dir}
 ```
-We can visualize the loss values of each model during training and testing, as well as their accuracy scores and the precision-recall curves.
+We can visualize many metrics collected while training and testing, including the loss function values of each model at each training step, and the precision-recall curves. This is of course most useful to select which model works best for our use-case as well as how to choose classification thresholds.
 
-![PR curve](https://raw.githubusercontent.com/eisenjulian/nlp_estimator_tutorial/master/pr.png)
+![PR curve](https://raw.githubusercontent.com/eisenjulian/nlp_estimator_tutorial/master/pr_curves.png)
+
+![loss](https://raw.githubusercontent.com/eisenjulian/nlp_estimator_tutorial/master/loss.png)
 
 ### Getting Predictions
 
@@ -311,7 +336,10 @@ def text_to_index(sentence):
 
 def print_predictions(sentences, classifier):
     indexes = [text_to_index(sentence) for sentence in sentences]
-    x = sequence.pad_sequences(indexes, maxlen=sentence_size)
+    x = sequence.pad_sequences(indexes,
+                               maxlen=sentence_size, 
+                               padding='post', 
+                               value=-1)
     length = np.array([min(len(x), sentence_size) for x in indexes])
     predict_input_fn = tf.estimator.inputs.numpy_input_fn(x={"x": x, "len": length}, shuffle=False)
     predictions = [p['logistic'][0] for p in classifier.predict(input_fn=predict_input_fn)]
@@ -320,7 +348,7 @@ def print_predictions(sentences, classifier):
 
 It is worth noting that the checkpoint itself is not sufficient to make predictions; the actual code used to build the estimator is necessary as well in order to map the saved weights to the corresponding tensors. It's a good practice to associate saved checkpoints with the branch of code with which they were created.
 
-If you are interested in exporting the models to disk in a fully recoverable way, you might want to look into the [SavedModel](https://www.tensorflow.org/programmers_guide/saved_model#using_savedmodel_with_estimators) class, which is especially for serving your model through an API using [TensorFlow Serving](https://github.com/tensorflow/serving).
+If you are interested in exporting the models to disk in a fully recoverable way, you might want to look into the [SavedModel](https://www.tensorflow.org/programmers_guide/saved_model#using_savedmodel_with_estimators) class, which is especially useful for serving your model through an API using [TensorFlow Serving](https://github.com/tensorflow/serving).
 
 ### Summary
 
@@ -335,6 +363,10 @@ For more details, be sure to check out:
  * The *NLTK* [Processing Raw Text](http://www.nltk.org/book/ch03.html) chapter on how to design langage pipelines.
 
 In a following post, we will show how to build a model using eager execution, work with out-of-memory datasets, train in Cloud ML, and deploy with TensorFlow Serving.
+
+----------
+
+*Thanks for reading! If you like you can find us online at [ruder.io](http://ruder.io/) and [@eisenjulian](https://twitter.com/eisenjulian). Send our way all your feedback and questions.*
 <!--stackedit_data:
 eyJwcm9wZXJ0aWVzIjoiIyBBZGQgY3VzdG9tIHByb3BlcnRpZX
 MgZm9yIHRoZSBjdXJyZW50IGZpbGUgaGVyZVxuIyB0byBvdmVy
@@ -345,5 +377,5 @@ RpYW4gUnVkZXJcbnRhZ3M6IFRlbnNvckZsb3csIEVzdGltYXRv
 ciwgTkxQXG5jYXRlZ29yaWVzOiBUZW5zb3JGbG93LCBFc3RpbW
 F0b3IsIE5MUFxuI2V4Y2VycHQ6XG4jZmVhdHVyZWRJbWFnZTpc
 biNzdGF0dXM6IGRyYWZ0XG5kYXRlOiAyMDE4LTAyLTE1IDExOj
-AwOjAwXG4iLCJoaXN0b3J5IjpbMTQyNzE1NTcwMF19
+AwOjAwXG4iLCJoaXN0b3J5IjpbLTEwOTAwNTE4MzRdfQ==
 -->
