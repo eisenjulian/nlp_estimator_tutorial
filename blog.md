@@ -3,7 +3,7 @@ Classifying text with TensorFlow Estimators
 ===
 *Posted by Sebastian Ruder and Julian Eisenschlos, Google Developer Experts*
 
-Hello there! Throughout this post we will work on sentiment classification using Estimators. Here’s the outline of what we’ll cover:
+Hello there! Throughout this post we will show you how to classify text using Estimators in TensorFlow. Here’s the outline of what we’ll cover:
 
 -   Loading data using Datasets.
 -   Building baselines using pre-canned estimators.
@@ -377,5 +377,5 @@ RpYW4gUnVkZXJcbnRhZ3M6IFRlbnNvckZsb3csIEVzdGltYXRv
 ciwgTkxQXG5jYXRlZ29yaWVzOiBUZW5zb3JGbG93LCBFc3RpbW
 F0b3IsIE5MUFxuI2V4Y2VycHQ6XG4jZmVhdHVyZWRJbWFnZTpc
 biNzdGF0dXM6IGRyYWZ0XG5kYXRlOiAyMDE4LTAyLTE1IDExOj
-AwOjAwXG4iLCJoaXN0b3J5IjpbMTQzNDk1NTM0OF19
+AwOjAwXG4iLCJoaXN0b3J5IjpbMzA4MTIyNDk3XX0=
 -->
