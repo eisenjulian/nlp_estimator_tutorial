@@ -274,7 +274,7 @@ with open('glove.6B.50d.txt', 'r', encoding='utf-8') as f:
         embeddings[w] = vectors
 ```
 
-After loading the vectors into memory from a file we store them as a `numpy` array using the same indexes as our vocabulary. The created numpy array is of shape `(5000, 50)`. At every row index, it contains the `50`-dimensional vector representing the word at the same index in our vocabulary.
+After loading the vectors into memory from a file we store them as a `numpy.array` using the same indexes as our vocabulary. The created numpy array is of shape `(5000, 50)`. At every row index, it contains the `50`-dimensional vector representing the word at the same index in our vocabulary.
 
 ```python create_glove_matrix.py
 embedding_matrix = np.random.uniform(-1, 1, size=(vocab_size, embedding_size))
@@ -362,5 +362,5 @@ RpYW4gUnVkZXJcbnRhZ3M6IFRlbnNvckZsb3csIEVzdGltYXRv
 ciwgTkxQXG5jYXRlZ29yaWVzOiBUZW5zb3JGbG93LCBFc3RpbW
 F0b3IsIE5MUFxuI2V4Y2VycHQ6XG4jZmVhdHVyZWRJbWFnZTpc
 biNzdGF0dXM6IGRyYWZ0XG5kYXRlOiAyMDE4LTAyLTE1IDExOj
-AwOjAwXG4iLCJoaXN0b3J5IjpbLTEyMTgzOTQxMjBdfQ==
+AwOjAwXG4iLCJoaXN0b3J5IjpbLTEwMDMwNjM3NTZdfQ==
 -->
