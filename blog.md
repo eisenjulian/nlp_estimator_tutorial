@@ -356,8 +356,8 @@ In this blog post, we explored how to use estimators for text classification, in
 
 For more details, be sure to check out:
 
- * The complete [source code](https://github.com) for this blog post.
  * A [Jupyter notebook](https://github.com) that can run locally, or on Colaboratory.
+ * The complete [source code](https://github.com/eisenjulian/nlp_estimator_tutorial/blob/master/nlp_estimators.py) for this blog post.
  * The TensorFlow [Embedding](https://www.tensorflow.org/programmers_guide/embedding) guide.
  * The TensorFlow [Vector Representation of Words](https://www.tensorflow.org/tutorials/word2vec) tutorial.
  * The *NLTK* [Processing Raw Text](http://www.nltk.org/book/ch03.html) chapter on how to design langage pipelines.
@@ -377,5 +377,5 @@ RpYW4gUnVkZXJcbnRhZ3M6IFRlbnNvckZsb3csIEVzdGltYXRv
 ciwgTkxQXG5jYXRlZ29yaWVzOiBUZW5zb3JGbG93LCBFc3RpbW
 F0b3IsIE5MUFxuI2V4Y2VycHQ6XG4jZmVhdHVyZWRJbWFnZTpc
 biNzdGF0dXM6IGRyYWZ0XG5kYXRlOiAyMDE4LTAyLTE1IDExOj
-AwOjAwXG4iLCJoaXN0b3J5IjpbLTEwOTAwNTE4MzRdfQ==
+AwOjAwXG4iLCJoaXN0b3J5IjpbLTc3MTk5Njk4OF19
 -->
