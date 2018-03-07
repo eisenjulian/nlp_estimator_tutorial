@@ -152,7 +152,17 @@ Convolutions are one way to take advantage of this structure, similar to how we 
 
 The following image shows how a filter matrix $F \in \mathbb{R}^{d\times m}$ slides across each $3$-gram window of tokens to build a new feature map. Afterwards a *pooling* layer is usually applied to combine adjacent results.
 
-![text convolution](https://raw.githubusercontent.com/eisenjulian/nlp_estimator_tutorial/master/conv.png)
+![text convolution](https://raw.githubusercontent.com/eisenjulian/nlp_estimator_tutorial/master/conv.png) ```
+<p align="center">
+  <b>Some Links:</b><br>
+  <a href="#">Link 1</a> |
+  <a href="#">Link 2</a> |
+  <a href="#">Link 3</a>
+  <br><br>
+  <img src="http://s.4cdn.org/image/title/105.gif">
+</p>
+
+```
 
 Let us look at the full model architecture. The use of dropout layers is a regularization technique that makes the model less likely to overfit.
 
@@ -354,5 +364,5 @@ RpYW4gUnVkZXJcbnRhZ3M6IFRlbnNvckZsb3csIEVzdGltYXRv
 ciwgTkxQXG5jYXRlZ29yaWVzOiBUZW5zb3JGbG93LCBFc3RpbW
 F0b3IsIE5MUFxuI2V4Y2VycHQ6XG4jZmVhdHVyZWRJbWFnZTpc
 biNzdGF0dXM6IGRyYWZ0XG5kYXRlOiAyMDE4LTAyLTE1IDExOj
-AwOjAwXG4iLCJoaXN0b3J5IjpbLTEyNTIwNzgzNTRdfQ==
+AwOjAwXG4iLCJoaXN0b3J5IjpbMjU2ODEzMDAwXX0=
 -->
