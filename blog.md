@@ -235,7 +235,7 @@ Using the `Estimator` API and the same model `head`, we can also create a classi
 
 One of the drawbacks of recurrent models compared to CNNs is that, because of the nature of recursion, models turn out deeper and more complex, which usually produces slower training time and worse convergence. LSTMs (and RNNs in general) can suffer convergence issues like vanishing or exploding gradients, that said, with sufficient tuning they can obtain state-of-the-art results for many problems. As a rule of thumb CNNs are good at feature extraction, while RNNs excel at tasks that depend on the meaning of the whole sentence and the length of the sequence matters, like question answering or machine translation.
 
-Each cell processes one token embedding at a time updating its internal state based on a differentiable computation that depends on both that vector $x_t$ and its previous state $h_{t-1}$. There's a great explanation about the logic behind that at [this post](http://colah.github.io/posts/2015-08-Understanding-LSTMs/) on [Christopher Olah](https://github.com/colah)'s blog. Actually, everything there is a must read!
+Each cell processes one token embedding at a time updating its internal state based on a differentiable computation that depends on both the embedding vector $x_t$ and its previous state $h_{t-1}$. There's a great explanation about the logic behind that at [this post](http://colah.github.io/posts/2015-08-Understanding-LSTMs/) on [Christopher Olah](https://github.com/colah)'s blog. Actually, everything there is a must read!
 
 ![LSTM Architecture](https://colah.github.io/posts/2015-08-Understanding-LSTMs/img/LSTM3-chain.png)
 
@@ -358,5 +358,5 @@ RpYW4gUnVkZXJcbnRhZ3M6IFRlbnNvckZsb3csIEVzdGltYXRv
 ciwgTkxQXG5jYXRlZ29yaWVzOiBUZW5zb3JGbG93LCBFc3RpbW
 F0b3IsIE5MUFxuI2V4Y2VycHQ6XG4jZmVhdHVyZWRJbWFnZTpc
 biNzdGF0dXM6IGRyYWZ0XG5kYXRlOiAyMDE4LTAyLTE1IDExOj
-AwOjAwXG4iLCJoaXN0b3J5IjpbNTU1NDg4NjIyXX0=
+AwOjAwXG4iLCJoaXN0b3J5IjpbMTA2NTU4ODk4M119
 -->
