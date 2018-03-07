@@ -243,7 +243,7 @@ Source: <a href="https://colah.github.io/posts/2015-08-Understanding-LSTMs/">Und
 </p></small>
 
 
-The overall model will end up looking like this:
+The complete LSTM model can be expressed by the following simple flowchart:
 ```mermaid
 graph LR
     id1(Embedding Layer) --> id2(LSTM Cell) 
@@ -362,5 +362,5 @@ RpYW4gUnVkZXJcbnRhZ3M6IFRlbnNvckZsb3csIEVzdGltYXRv
 ciwgTkxQXG5jYXRlZ29yaWVzOiBUZW5zb3JGbG93LCBFc3RpbW
 F0b3IsIE5MUFxuI2V4Y2VycHQ6XG4jZmVhdHVyZWRJbWFnZTpc
 biNzdGF0dXM6IGRyYWZ0XG5kYXRlOiAyMDE4LTAyLTE1IDExOj
-AwOjAwXG4iLCJoaXN0b3J5IjpbLTE2ODQ4OTc1Ml19
+AwOjAwXG4iLCJoaXN0b3J5IjpbMzExNTI4NTldfQ==
 -->
