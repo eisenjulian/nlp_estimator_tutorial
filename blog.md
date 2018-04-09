@@ -120,7 +120,7 @@ weights = classifier.get_variable_value('linear/linear_model/x/weights').flatten
 extremes = np.concatenate((sorted_indexes[-8:], sorted_indexes[:8]))
 # word_inverted_index is a dictionary that maps from indexes back to tokens
 extreme_weights = sorted(
-    [(weights[i], word_inverted_index[i - index_offset]) for i in extremes])
+    [(weights[i], word_inverted_index[i]) for i in extremes])
 # Create plot
 y_pos = np.arange(len(extreme_weights))
 plt.bar(y_pos, [pair[0] for pair in extreme_weights], align='center', alpha=0.5)
@@ -377,6 +377,6 @@ RpYW4gUnVkZXJcbnRhZ3M6IFRlbnNvckZsb3csIEVzdGltYXRv
 ciwgTkxQXG5jYXRlZ29yaWVzOiBUZW5zb3JGbG93LCBFc3RpbW
 F0b3IsIE5MUFxuI2V4Y2VycHQ6XG4jZmVhdHVyZWRJbWFnZTpc
 biNzdGF0dXM6IGRyYWZ0XG5kYXRlOiAyMDE4LTAyLTE1IDExOj
-AwOjAwXG4iLCJoaXN0b3J5IjpbLTIwODYyNjE3NywzNjQxMDc4
-NjldfQ==
+AwOjAwXG4iLCJoaXN0b3J5IjpbLTE4NTQ1NDUyOTQsLTIwODYy
+NjE3NywzNjQxMDc4NjldfQ==
 -->
