@@ -57,11 +57,11 @@ print("Pad sequences (samples x time)")
 x_train = sequence.pad_sequences(x_train_variable, 
                                  maxlen=sentence_size, 
                                  padding='post', 
-                                 value=-1)
+                                 value=0)
 x_test = sequence.pad_sequences(x_test_variable, 
                                 maxlen=sentence_size, 
                                 padding='post', 
-                                value=-1)
+                                value=0)
 print("x_train shape:", x_train.shape)
 print("x_test shape:", x_test.shape)
 
@@ -414,7 +414,7 @@ def print_predictions(sentences):
     x = sequence.pad_sequences(indexes, 
                                maxlen=sentence_size, 
                                padding='post', 
-                               value=-1)
+                               value=0)
     length = np.array([min(len(x), sentence_size) for x in indexes])
     predict_input_fn = tf.estimator.inputs.numpy_input_fn(x={"x": x, "len": length}, shuffle=False)
     predictions = {}
