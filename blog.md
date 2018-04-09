@@ -332,14 +332,14 @@ def text_to_index(sentence):
     # Remove punctuation characters except for the apostrophe
     translator = str.maketrans('', '', string.punctuation.replace("'", ''))
     tokens = sentence.translate(translator).lower().split()
-    return np.array([1] + [word_index[t] + index_offset if t in word_index else 2 for t in tokens])
+    return np.array([1] + [word_index[t] if t in word_index else 2 for t in tokens])
 
 def print_predictions(sentences, classifier):
     indexes = [text_to_index(sentence) for sentence in sentences]
     x = sequence.pad_sequences(indexes,
                                maxlen=sentence_size, 
                                padding='post', 
-                               value=-1)
+                               value=0)
     length = np.array([min(len(x), sentence_size) for x in indexes])
     predict_input_fn = tf.estimator.inputs.numpy_input_fn(x={"x": x, "len": length}, shuffle=False)
     predictions = [p['logistic'][0] for p in classifier.predict(input_fn=predict_input_fn)]
@@ -377,6 +377,6 @@ RpYW4gUnVkZXJcbnRhZ3M6IFRlbnNvckZsb3csIEVzdGltYXRv
 ciwgTkxQXG5jYXRlZ29yaWVzOiBUZW5zb3JGbG93LCBFc3RpbW
 F0b3IsIE5MUFxuI2V4Y2VycHQ6XG4jZmVhdHVyZWRJbWFnZTpc
 biNzdGF0dXM6IGRyYWZ0XG5kYXRlOiAyMDE4LTAyLTE1IDExOj
-AwOjAwXG4iLCJoaXN0b3J5IjpbLTE4NTQ1NDUyOTQsLTIwODYy
-NjE3NywzNjQxMDc4NjldfQ==
+AwOjAwXG4iLCJoaXN0b3J5IjpbMTkyMzU0MTc4MSwtMTg1NDU0
+NTI5NCwtMjA4NjI2MTc3LDM2NDEwNzg2OV19
 -->
