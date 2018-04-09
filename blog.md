@@ -30,7 +30,7 @@ For illustration, here's a piece of a negative review (with $2$ stars) in the da
 
 *Keras* provides a convenient handler for importing the dataset which is also available as a serialized numpy array `.npz` file to download [here]( https://s3.amazonaws.com/text-datasets/imdb.npz). For text classification, it is standard to limit the size of the vocabulary to prevent the dataset from becoming too sparse and high dimensional, causing potential overfitting. For this reason, each review consists of a series of word indexes that go from $4$ (the most frequent word in the dataset **the**) to $4999$, which corresponds to **orange**. Index $1$ represents the beginning of the sentence and the index $2$ is assigned to all unknown (also known as *out-of-vocabulary* or *OOV*) tokens. These indexes have been obtained by pre-processing the text data in a pipeline that cleans, normalizes and tokenizes each sentence first and then builds a dictionary indexing each of the tokens by frequency.
 
-After we've loaded the data in memory we pad each of the sentences with $-1$ to a fixed size (here: $200$) so that we have two $2$-dimensional $25000\times200$ arrays for training and testing respectively.
+After we've loaded the data in memory we pad each of the sentences with $0$ to a fixed size (here: $200$) so that we have two $2$-dimensional $25000\times200$ arrays for training and testing respectively.
 
 ```python load_data.py
 vocab_size = 5000
@@ -40,12 +40,12 @@ x_train = sequence.pad_sequences(
     x_train_variable, 
     maxlen=sentence_size, 
     padding='post', 
-    value=-1)
+    value=0)
 x_test = sequence.pad_sequences(
     x_test_variable,
     maxlen=sentence_size, 
     padding='post', 
-    value=-1)
+    value=0)
 ```
 
 ### Input Functions
@@ -377,5 +377,6 @@ RpYW4gUnVkZXJcbnRhZ3M6IFRlbnNvckZsb3csIEVzdGltYXRv
 ciwgTkxQXG5jYXRlZ29yaWVzOiBUZW5zb3JGbG93LCBFc3RpbW
 F0b3IsIE5MUFxuI2V4Y2VycHQ6XG4jZmVhdHVyZWRJbWFnZTpc
 biNzdGF0dXM6IGRyYWZ0XG5kYXRlOiAyMDE4LTAyLTE1IDExOj
-AwOjAwXG4iLCJoaXN0b3J5IjpbMzY0MTA3ODY5XX0=
+AwOjAwXG4iLCJoaXN0b3J5IjpbLTIwODYyNjE3NywzNjQxMDc4
+NjldfQ==
 -->
