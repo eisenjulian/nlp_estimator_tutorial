@@ -38,7 +38,6 @@ print(tf.__version__)
 
 Keras provides a convenient handler for importing the dataset which is also available as a serialized numpy array `.npz` file to download [here]( https://s3.amazonaws.com/text-datasets/imdb.npz). Each review consists of a series of word indexes that go from $4$ (the most frequent word in the dataset, **the**) to $4999$, which corresponds to **orange**. Index $1$ represents the beginning of the sentence and the index $2$ is assigned to all unknown (also known as *out-of-vocabulary* or *OOV*) tokens. These indexes have been obtained by pre-processing the text data in a pipeline that cleans, normalizes and tokenizes each sentence first and then builds a dictionary indexing each of the tokens by frequency. We are not convering these techniques in this post, but you can take a look at [this chapter](http://www.nltk.org/book/ch03.html) of the NLTK book to learn more.
 
-It's standard to limit the size of the vocabulary to prevent the dataset from becoming too sparse and high dimensional, causing potential overfitting. After we've loaded the data in memory we pad each of the sentences with $-1$ to a fixed size (here: $200$) so that we have two $2$-dimensional $25000\times200$ arrays for training and testing respectively.
 """
 
 vocab_size = 5000
@@ -358,8 +357,7 @@ def load_glove_embeddings(path):
         if v is not None and i < vocab_size:
             embedding_matrix[i] = v
             num_loaded += 1
-    print('Successfully loaded pretrained embeddings for '
-          f'{num_loaded}/{vocab_size} words.')
+    print(f'Successfully loaded pretrained embeddings for {num_loaded}/{vocab_size} words.')
     embedding_matrix = embedding_matrix.astype(np.float32)
     return embedding_matrix
 
