@@ -357,7 +357,7 @@ def load_glove_embeddings(path):
         if v is not None and i < vocab_size:
             embedding_matrix[i] = v
             num_loaded += 1
-    print(f'Successfully loaded pretrained embeddings for {num_loaded}/{vocab_size} words.')
+    print('Successfully loaded pretrained embeddings for {}/{} words.'.format(num_loaded, vocab_size))
     embedding_matrix = embedding_matrix.astype(np.float32)
     return embedding_matrix
 
